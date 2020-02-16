@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -20,18 +20,18 @@
 
 package org.simmetrics.metrics;
 
+import org.simmetrics.ListMetric;
+import org.simmetrics.StringMetric;
+
+import java.util.List;
+
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.lang.Math.max;
 import static java.lang.Math.sqrt;
 
-import java.util.List;
-
-import org.simmetrics.ListMetric;
-import org.simmetrics.StringMetric;
-
 /**
- * Calculates the normalized Monge-Elkan distance (similarity) over two strings.
- * The normalized Monge-Elkan distance is used because the the unnormalized
+ * Calculates the normalized Level2 distance (similarity) over two strings.
+ * The normalized Level2 distance is used because the the unnormalized
  * distance is not symmetric.
  * <p>
  * <code>
@@ -39,19 +39,22 @@ import org.simmetrics.StringMetric;
  * monge-elkan(a,b) = average( for s in a | max( for q in b | metric(s,q))
  * </code>
  * <p>
+ *
+ * @see <a href="https://www.aaai.org/Papers/KDD/1996/KDD96-044.pdf">The field
+ * Matching problem; Algorithms and applications</a>
+ * <p>
  * This class is immutable and thread-safe.
  */
-public final class MongeElkan implements ListMetric<String> {
+public final class Level2 implements ListMetric<String> {
 
 	private final StringMetric metric;
 
 	/**
-	 * Constructs a Monge-Elkan metric with metric.
-	 * 
-	 * @param metric
-	 *            metric to use
+	 * Constructs a Level 2 metric with metric.
+	 *
+	 * @param metric metric to use
 	 */
-	public MongeElkan(final StringMetric metric) {
+	public Level2(final StringMetric metric) {
 		this.metric = metric;
 	}
 

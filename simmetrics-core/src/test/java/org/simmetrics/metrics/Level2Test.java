@@ -25,7 +25,7 @@ import org.simmetrics.ListMetricTest;
 import org.simmetrics.StringMetric;
 
 @SuppressWarnings("javadoc")
-public final class MongeElkanTest extends ListMetricTest {
+public final class Level2Test extends ListMetricTest {
 
 	@Override
 	protected boolean supportsNullValues() {
@@ -34,7 +34,7 @@ public final class MongeElkanTest extends ListMetricTest {
 	
 	@Override
 	protected ListMetric<String> getMetric() {
-		return new MongeElkan(new StringMetric() {
+		return new Level2(new StringMetric() {
 
 			@Override
 			public float compare(String a, String b) {

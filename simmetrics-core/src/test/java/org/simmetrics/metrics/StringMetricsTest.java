@@ -153,11 +153,11 @@ public class StringMetricsTest {
 
 	}
 
-	public static class CreateMongeElkan extends StringMetricTest {
+	public static class CreateLevel2 extends StringMetricTest {
 
 		@Override
 		protected Metric<String> getMetric() {
-			return StringMetrics.mongeElkan();
+			return StringMetrics.level2SmithWatermanGotoh();
 		}
 
 		@Override

@@ -187,16 +187,16 @@ public final class StringMetrics {
 	}
 
 	/**
-	 * Returns a normalized Monge-Elkan metric over tokens in a string. The
+	 * Returns a normalized Level 2 metric over tokens in a string. The
 	 * tokens are created by splitting the string on whitespace. The metric
 	 * applies Smith-Waterman-Gotoh internally.
 	 * 
 	 * @return a normalized Monge-Elkan metric
 	 * 
-	 * @see MongeElkan
+	 * @see Level2
 	 */
-	public static StringMetric mongeElkan() {
-		return with(new MongeElkan(new SmithWatermanGotoh())).tokenize(
+	public static StringMetric level2SmithWatermanGotoh() {
+		return with(new Level2(new SmithWatermanGotoh())).tokenize(
 				whitespace()).build();
 	}
 
