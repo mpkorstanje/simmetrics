@@ -40,7 +40,6 @@
 	<ciManagement>
 		<system>Travis CI</system>
 		<url>https://travis-ci.org/mpkorstanje/simmetrics</url>
-		<notifiers></notifiers>
 	</ciManagement>
 
 	<issueManagement>
