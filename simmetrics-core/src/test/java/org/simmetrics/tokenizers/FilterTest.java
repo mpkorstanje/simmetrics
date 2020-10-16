@@ -34,7 +34,6 @@ import static org.simmetrics.PredicateMatcher.rejects;
 import static org.simmetrics.tokenizers.Tokenizers.Filter;
 import static org.simmetrics.tokenizers.Tokenizers.Transform;
 
-@SuppressWarnings("javadoc")
 public class FilterTest extends TokenizerTest {
 
 	private final Tokenizer whitespace = Tokenizers.whitespace();

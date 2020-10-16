@@ -19,7 +19,6 @@
  */
 package org.simmetrics.simplifiers;
 
-@SuppressWarnings("javadoc")
 public class MatchRatingApproachTest extends SimplifierTest {
 
 	@Override

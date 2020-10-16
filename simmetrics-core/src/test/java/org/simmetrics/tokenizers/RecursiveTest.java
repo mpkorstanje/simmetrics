@@ -33,7 +33,6 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.assertThat;
 
-@SuppressWarnings("javadoc")
 public class RecursiveTest extends TokenizerTest {
 	
 	@Override

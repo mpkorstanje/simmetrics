@@ -31,7 +31,6 @@ import org.simmetrics.MultisetMetricTest;
 
 import com.google.common.collect.Multiset;
 
-@SuppressWarnings("javadoc")
 @RunWith(Enclosed.class)
 public final class GeneralizedJaccardTest  {
 	

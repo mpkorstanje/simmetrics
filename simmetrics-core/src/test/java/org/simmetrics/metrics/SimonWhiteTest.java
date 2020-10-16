@@ -38,7 +38,6 @@ import com.google.common.collect.Multiset;
 
 import java.util.function.Predicate;
 
-@SuppressWarnings("javadoc")
 @RunWith(Enclosed.class)
 public final class SimonWhiteTest  {
 	

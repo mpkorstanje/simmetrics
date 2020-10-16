@@ -33,7 +33,6 @@ import static org.simmetrics.matchers.ToStringContainsSimpleClassName.toStringCo
 import org.junit.Before;
 import org.junit.Test;
 
-@SuppressWarnings("javadoc")
 public abstract class MetricTest<K> {
 
 	protected static class TestCase<K> {

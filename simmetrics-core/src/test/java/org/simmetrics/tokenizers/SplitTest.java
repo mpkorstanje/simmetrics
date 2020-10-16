@@ -22,7 +22,6 @@ package org.simmetrics.tokenizers;
 import static java.util.regex.Pattern.compile;
 import static org.simmetrics.tokenizers.Tokenizers.Split;
 
-@SuppressWarnings("javadoc")
 public class SplitTest extends TokenizerTest {
 
 	@Override

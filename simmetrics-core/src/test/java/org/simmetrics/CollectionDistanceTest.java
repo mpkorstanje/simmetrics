@@ -23,7 +23,6 @@ import static org.junit.Assert.fail;
 import java.util.Collection;
 import org.junit.Test;
 
-@SuppressWarnings("javadoc")
 public abstract class CollectionDistanceTest<V, K extends Collection<V>> extends DistanceTest<K> {
 
 	protected static class C<V, K extends Collection<V>> extends TestCase<K> {

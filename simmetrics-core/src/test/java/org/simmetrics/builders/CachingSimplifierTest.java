@@ -38,7 +38,6 @@ import org.simmetrics.simplifiers.SimplifierTest;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
-@SuppressWarnings("javadoc")
 public abstract class CachingSimplifierTest extends SimplifierTest {
 
 	private Simplifier innerSimplifier;

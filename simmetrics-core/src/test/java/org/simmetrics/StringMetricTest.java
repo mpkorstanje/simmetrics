@@ -20,7 +20,6 @@
 
 package org.simmetrics;
 
-@SuppressWarnings("javadoc")
 public abstract class StringMetricTest extends MetricTest<String> {
 
 	protected static final class T extends TestCase<String>{

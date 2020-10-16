@@ -24,7 +24,6 @@ import org.simmetrics.ListMetric;
 import org.simmetrics.ListMetricTest;
 import org.simmetrics.StringMetric;
 
-@SuppressWarnings("javadoc")
 public final class Level2Test extends ListMetricTest {
 
 	@Override

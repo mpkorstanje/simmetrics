@@ -26,7 +26,6 @@ import org.simmetrics.simplifiers.Simplifiers.ChainSimplifier;
 
 import com.google.common.collect.ImmutableList;
 
-@SuppressWarnings("javadoc")
 public abstract class SimplifiersMatcher extends TypeSafeMatcher<Simplifier> {
 	
 	public static SimplifiersMatcher chain(final Simplifier simplifier,

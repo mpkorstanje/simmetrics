@@ -23,7 +23,6 @@ import static org.junit.Assert.fail;
 import java.util.Collection;
 import org.junit.Test;
 
-@SuppressWarnings("javadoc")
 public abstract class CollectionMetricTest<V, K extends Collection<V>> extends MetricTest<K> {
 
 	protected static class C<V, K extends Collection<V>> extends TestCase<K> {

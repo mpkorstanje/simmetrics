@@ -108,7 +108,6 @@ public final class StringDistanceBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface BuildStep {
 		/**
 		 * Builds a distance with the given steps.
@@ -119,7 +118,6 @@ public final class StringDistanceBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface StringDistanceInitialSimplifierStep extends BuildStep {
 		/**
 		 * Adds a simplifier to the distance.
@@ -140,7 +138,6 @@ public final class StringDistanceBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface StringDistanceSimplifierStep extends StringDistanceInitialSimplifierStep {
 		/**
 		 * Adds a simplifier to the distance.
@@ -172,7 +169,6 @@ public final class StringDistanceBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface CollectionDistanceInitialSimplifierStep<T extends Collection<String>> {
 		/**
 		 * Adds a simplifier to the distance.
@@ -194,7 +190,6 @@ public final class StringDistanceBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface CollectionDistanceSimplifierStep<T extends Collection<String>>
 			extends CollectionDistanceInitialSimplifierStep<T> {
 		/**
@@ -229,7 +224,6 @@ public final class StringDistanceBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface CollectionDistanceInitialTokenizerStep<T extends Collection<String>> {
 		/**
 		 * Adds a tokenization step to the distance.
@@ -242,7 +236,6 @@ public final class StringDistanceBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface CollectionDistanceTokenizerStep<T extends Collection<String>>
 			extends BuildStep, CollectionDistanceInitialTokenizerStep<T> {
 		/**

@@ -30,7 +30,6 @@ import java.util.List;
 
 import org.simmetrics.tokenizers.Tokenizer;
 
-@SuppressWarnings("javadoc")
 public abstract class ListMetricTest extends CollectionMetricTest<String,List<String>> {
 	
 	protected static final class T extends C<String,List<String>>{

@@ -20,7 +20,6 @@
 
 package org.simmetrics.tokenizers;
 
-@SuppressWarnings("javadoc")
 public class WhitespaceTest extends TokenizerTest {
 
 	@Override

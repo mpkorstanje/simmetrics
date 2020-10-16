@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-@SuppressWarnings("javadoc")
 public class ReadMeExampleTest {
 
 	private static final float DELTA = 0.0001f;

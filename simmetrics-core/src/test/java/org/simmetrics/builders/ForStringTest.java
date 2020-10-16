@@ -27,7 +27,6 @@ import org.simmetrics.builders.StringMetrics.ForString;
 
 import static org.junit.Assert.assertSame;
 
-@SuppressWarnings("javadoc")
 public class ForStringTest extends StringMetricTest{
 
 	private final Metric<String> metric = new Identity<>();

@@ -30,7 +30,6 @@ import static org.junit.Assert.assertSame;
 import static org.simmetrics.tokenizers.Tokenizers.Filter;
 import static org.simmetrics.tokenizers.Tokenizers.Transform;
 
-@SuppressWarnings("javadoc")
 public class TransformTest extends TokenizerTest {
 
 	private final Tokenizer whitespace = Tokenizers.whitespace();

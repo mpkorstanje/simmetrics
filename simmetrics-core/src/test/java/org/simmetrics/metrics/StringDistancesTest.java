@@ -28,7 +28,6 @@ import org.simmetrics.StringDistance;
 import org.simmetrics.StringDistanceTest;
 import org.simmetrics.metrics.StringDistances;
 
-@SuppressWarnings("javadoc")
 @RunWith(Enclosed.class)
 public class StringDistancesTest {
 

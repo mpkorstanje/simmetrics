@@ -30,7 +30,6 @@ import org.simmetrics.tokenizers.Tokenizers;
 
 import static org.junit.Assert.assertSame;
 
-@SuppressWarnings("javadoc")
 public class ForMultisetTest extends StringMetricTest {
 
 	private final Tokenizer tokenizer = Tokenizers.whitespace();

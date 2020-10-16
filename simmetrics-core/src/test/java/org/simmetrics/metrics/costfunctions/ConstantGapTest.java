@@ -23,7 +23,6 @@ package org.simmetrics.metrics.costfunctions;
 import org.simmetrics.metrics.functions.ConstantGap;
 import org.simmetrics.metrics.functions.Gap;
 
-@SuppressWarnings("javadoc")
 public final class ConstantGapTest extends GapCostTest {
 	@Override
 	protected Gap getCost() {

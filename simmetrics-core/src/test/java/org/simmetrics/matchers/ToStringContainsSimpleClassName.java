@@ -23,7 +23,6 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 
-@SuppressWarnings("javadoc")
 public class ToStringContainsSimpleClassName<T> extends TypeSafeDiagnosingMatcher<T>{
 
 	@Override

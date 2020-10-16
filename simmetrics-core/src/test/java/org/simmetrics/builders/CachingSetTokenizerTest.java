@@ -25,7 +25,6 @@ import org.simmetrics.builders.StringMetricBuilder.CachingSetTokenizer;
 import org.simmetrics.tokenizers.Tokenizer;
 import com.google.common.cache.Cache;
 
-@SuppressWarnings("javadoc")
 public class CachingSetTokenizerTest extends CachingTokenizerTest<Set<String>> {
 
 	@Override

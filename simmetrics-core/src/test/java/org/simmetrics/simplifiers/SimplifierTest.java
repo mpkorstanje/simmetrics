@@ -28,7 +28,6 @@ import static org.simmetrics.matchers.ImplementsToString.implementsToString;
 import org.junit.Before;
 import org.junit.Test;
 
-@SuppressWarnings("javadoc")
 public abstract class SimplifierTest {
 	protected static final class T {
 		final String expected;

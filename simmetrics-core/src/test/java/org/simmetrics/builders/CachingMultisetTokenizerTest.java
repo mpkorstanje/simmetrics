@@ -25,7 +25,6 @@ import org.simmetrics.tokenizers.Tokenizer;
 import com.google.common.cache.Cache;
 import com.google.common.collect.Multiset;
 
-@SuppressWarnings("javadoc")
 public class CachingMultisetTokenizerTest extends CachingTokenizerTest<Multiset<String>> {
 
 	

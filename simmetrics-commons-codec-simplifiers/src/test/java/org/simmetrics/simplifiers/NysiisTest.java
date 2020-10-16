@@ -19,7 +19,6 @@
  */
 package org.simmetrics.simplifiers;
 
-@SuppressWarnings("javadoc")
 public class NysiisTest extends SimplifierTest {
 
 	@Override

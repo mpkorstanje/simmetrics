@@ -33,7 +33,6 @@ import org.simmetrics.simplifiers.Simplifiers;
 import org.simmetrics.tokenizers.Tokenizer;
 import org.simmetrics.tokenizers.Tokenizers;
 
-@SuppressWarnings("javadoc")
 public class ForListWithSimplifierTest extends StringMetricTest{
 
 	private final Tokenizer tokenizer = Tokenizers.whitespace();

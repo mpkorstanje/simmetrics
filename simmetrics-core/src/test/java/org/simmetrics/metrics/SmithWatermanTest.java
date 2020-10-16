@@ -24,7 +24,6 @@ import org.simmetrics.StringMetric;
 import org.simmetrics.StringMetricTest;
 
 
-@SuppressWarnings("javadoc")
 public class SmithWatermanTest extends StringMetricTest {
 	
 	@Override

@@ -25,7 +25,6 @@ import org.junit.runner.RunWith;
 import org.simmetrics.metrics.functions.AffineGap;
 import org.simmetrics.metrics.functions.Gap;
 
-@SuppressWarnings("javadoc")
 @RunWith(Enclosed.class)
 public final class AffineGapTest {
 

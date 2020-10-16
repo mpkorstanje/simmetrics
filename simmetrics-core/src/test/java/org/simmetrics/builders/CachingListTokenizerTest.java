@@ -26,7 +26,6 @@ import org.simmetrics.tokenizers.Tokenizer;
 
 import com.google.common.cache.Cache;
 
-@SuppressWarnings("javadoc")
 public class CachingListTokenizerTest extends CachingTokenizerTest<List<String>> {
 
 	@Override

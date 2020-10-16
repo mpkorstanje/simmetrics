@@ -29,7 +29,6 @@ import java.util.Set;
 import com.google.common.collect.Sets;
 import org.simmetrics.tokenizers.Tokenizer;
 
-@SuppressWarnings("javadoc")
 public abstract class SetDistanceTest extends CollectionDistanceTest<String,Set<String>>{
 
 	protected static final class T  extends C<String,Set<String>>{

@@ -42,7 +42,6 @@ import org.mockito.junit.MockitoRule;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 
-@SuppressWarnings("javadoc")
 public abstract class TokenizerTest {
 
 	@Rule

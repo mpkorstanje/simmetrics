@@ -19,7 +19,6 @@
  */
 package org.simmetrics.simplifiers;
 
-@SuppressWarnings("javadoc")
 public class CaverPhone2Test extends SimplifierTest {
 
 	@Override

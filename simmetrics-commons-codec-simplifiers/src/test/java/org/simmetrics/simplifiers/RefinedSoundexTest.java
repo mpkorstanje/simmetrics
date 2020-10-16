@@ -19,7 +19,6 @@
  */
 package org.simmetrics.simplifiers;
 
-@SuppressWarnings("javadoc")
 public class RefinedSoundexTest extends SimplifierTest {
 
 	@Override

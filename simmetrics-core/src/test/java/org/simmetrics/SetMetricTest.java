@@ -30,7 +30,6 @@ import com.google.common.collect.Sets;
 import org.simmetrics.tokenizers.Tokenizer;
 import org.simmetrics.tokenizers.Tokenizers;
 
-@SuppressWarnings("javadoc")
 public abstract class SetMetricTest extends CollectionMetricTest<String,Set<String>>{
 
 	protected static final class T  extends C<String,Set<String>>{

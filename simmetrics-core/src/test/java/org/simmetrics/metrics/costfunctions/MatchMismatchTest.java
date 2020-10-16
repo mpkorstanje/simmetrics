@@ -23,7 +23,6 @@ package org.simmetrics.metrics.costfunctions;
 import org.simmetrics.metrics.functions.MatchMismatch;
 import org.simmetrics.metrics.functions.Substitution;
 
-@SuppressWarnings("javadoc")
 public class MatchMismatchTest extends SubstitutionTest {
 	
 	@Override

@@ -19,7 +19,6 @@
  */
 package org.simmetrics.simplifiers;
 
-@SuppressWarnings("javadoc")
 public class ColognePhoneticTest extends SimplifierTest {
 
 	@Override

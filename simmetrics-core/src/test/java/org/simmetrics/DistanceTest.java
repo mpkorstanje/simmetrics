@@ -34,7 +34,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-@SuppressWarnings("javadoc")
 public abstract class DistanceTest<K> {
 
 	protected static class TestCase<K> {

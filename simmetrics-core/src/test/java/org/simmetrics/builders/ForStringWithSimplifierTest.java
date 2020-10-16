@@ -29,7 +29,6 @@ import org.simmetrics.builders.StringMetrics.ForStringWithSimplifier;
 import org.simmetrics.simplifiers.Simplifier;
 import org.simmetrics.simplifiers.Simplifiers;
 
-@SuppressWarnings("javadoc")
 public class ForStringWithSimplifierTest extends StringMetricTest{
 
 	private final Metric<String> metric = new Identity<>();

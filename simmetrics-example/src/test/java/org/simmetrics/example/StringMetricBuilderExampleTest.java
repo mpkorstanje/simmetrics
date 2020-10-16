@@ -24,7 +24,6 @@ import org.junit.Test;
 import org.simmetrics.example.StringMetricBuilderExample;
 
 
-@SuppressWarnings("javadoc")
 public class StringMetricBuilderExampleTest {
 	
 	private static final float DELTA = 0.0001f;

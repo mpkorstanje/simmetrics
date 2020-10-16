@@ -31,7 +31,6 @@ import org.simmetrics.builders.StringMetrics.ForSet;
 import org.simmetrics.tokenizers.Tokenizer;
 import org.simmetrics.tokenizers.Tokenizers;
 
-@SuppressWarnings("javadoc")
 public class ForSetTest extends StringMetricTest {
 
 	private final Tokenizer tokenizer = Tokenizers.whitespace();

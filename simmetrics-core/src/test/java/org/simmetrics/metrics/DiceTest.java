@@ -30,7 +30,6 @@ import org.simmetrics.SetDistanceTest;
 import org.simmetrics.SetMetric;
 import org.simmetrics.SetMetricTest;
 
-@SuppressWarnings("javadoc")
 @RunWith(Enclosed.class)
 public class DiceTest {
 	

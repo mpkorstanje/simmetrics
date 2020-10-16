@@ -33,7 +33,6 @@ import org.simmetrics.tokenizers.Tokenizers;
 
 import com.google.common.collect.Multiset;
 
-@SuppressWarnings("javadoc")
 public class ForMultisetWithSimplifierTest extends StringMetricTest{
 
 	private final Tokenizer tokenizer = Tokenizers.whitespace();

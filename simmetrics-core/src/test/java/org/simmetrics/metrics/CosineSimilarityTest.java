@@ -27,7 +27,6 @@ import org.simmetrics.MultisetMetricTest;
 
 import com.google.common.collect.Multiset;
 
-@SuppressWarnings("javadoc")
 public final class CosineSimilarityTest extends MultisetMetricTest {
 
 	@Override

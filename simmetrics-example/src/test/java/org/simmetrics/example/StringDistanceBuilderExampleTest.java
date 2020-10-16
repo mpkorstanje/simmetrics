@@ -24,7 +24,6 @@ import org.junit.Test;
 import org.simmetrics.example.StringDistanceBuilderExample;
 
 
-@SuppressWarnings("javadoc")
 public class StringDistanceBuilderExampleTest {
 	
 	private static final float DELTA = 0.0001f;

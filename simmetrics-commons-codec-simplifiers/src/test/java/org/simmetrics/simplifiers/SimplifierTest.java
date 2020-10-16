@@ -29,7 +29,6 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.simmetrics.matchers.ImplementsToString.implementsToString;
 
-@SuppressWarnings("javadoc")
 public abstract class SimplifierTest {
 	protected static final class T {
 		final String expected;

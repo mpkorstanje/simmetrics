@@ -25,7 +25,6 @@ import static java.util.Arrays.asList;
 import org.simmetrics.MultisetMetric;
 import org.simmetrics.MultisetMetricTest;
 
-@SuppressWarnings("javadoc")
 public final class GeneralizedOverlapCoefficientTest extends MultisetMetricTest {
 
 	@Override

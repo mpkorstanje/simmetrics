@@ -114,7 +114,6 @@ public final class StringMetricBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface BuildStep {
 		/**
 		 * Builds a metric with the given steps.
@@ -125,7 +124,6 @@ public final class StringMetricBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface StringMetricInitialSimplifierStep extends BuildStep {
 		/**
 		 * Adds a simplifier to the metric.
@@ -146,7 +144,6 @@ public final class StringMetricBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface StringMetricSimplifierStep extends
 			StringMetricInitialSimplifierStep {
 		/**
@@ -179,7 +176,6 @@ public final class StringMetricBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface CollectionMetricInitialSimplifierStep<T extends Collection<String>> {
 		/**
 		 * Adds a simplifier to the metric.
@@ -201,7 +197,6 @@ public final class StringMetricBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface CollectionMetricSimplifierStep<T extends Collection<String>>
 			extends CollectionMetricInitialSimplifierStep<T> {
 		/**
@@ -237,7 +232,6 @@ public final class StringMetricBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface CollectionMetricInitialTokenizerStep<T extends Collection<String>> {
 		/**
 		 * Adds a tokenization step to the metric.
@@ -250,7 +244,6 @@ public final class StringMetricBuilder {
 
 	}
 
-	@SuppressWarnings("javadoc")
 	public interface CollectionMetricTokenizerStep<T extends Collection<String>>
 			extends BuildStep, CollectionMetricInitialTokenizerStep<T> {
 		/**

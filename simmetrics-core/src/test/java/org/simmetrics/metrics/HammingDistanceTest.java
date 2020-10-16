@@ -31,7 +31,6 @@ import org.simmetrics.Distance;
 import org.simmetrics.ListDistanceTest;
 import org.simmetrics.StringDistanceTest;
 
-@SuppressWarnings("javadoc")
 @RunWith(Enclosed.class)
 public final class HammingDistanceTest {
 

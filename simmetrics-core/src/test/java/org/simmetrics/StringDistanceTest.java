@@ -19,7 +19,6 @@
  */
 package org.simmetrics;
 
-@SuppressWarnings("javadoc")
 public abstract class StringDistanceTest extends DistanceTest<String> {
 	
 	protected static final class T extends TestCase<String>{

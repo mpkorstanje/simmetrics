@@ -23,7 +23,6 @@ package org.simmetrics.tokenizers;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("javadoc")
 @RunWith(Enclosed.class)
 public class QGramTest {
 

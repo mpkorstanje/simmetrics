@@ -28,7 +28,6 @@ import java.util.List;
 
 import org.simmetrics.tokenizers.Tokenizer;
 
-@SuppressWarnings("javadoc")
 public abstract class ListDistanceTest extends CollectionDistanceTest<String,List<String>> {
 
 	protected static final class T extends C<String,List<String>> {

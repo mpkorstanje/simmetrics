@@ -23,7 +23,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 
-@SuppressWarnings("javadoc")
 public class StringMetricsExampleTest {
 	
 	private static final float DELTA = 0.0001f;
