@@ -76,11 +76,6 @@
 				<version>29.0-jre</version>
 			</dependency>
 			<dependency>
-				<groupId>jp.skypencil.guava</groupId>
-				<artifactId>helper</artifactId>
-				<version>1.2.0</version>
-			</dependency>
-			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.13.1</version>
