@@ -35,7 +35,7 @@ import static java.lang.Math.sqrt;
  * distance is not symmetric.
  * <p>
  * <code>
- * similarity(a,b) = sqrt(monge-elkan(a,b) * monge-elkan(b,a))
+ * similarity(a,b) = sqrt(level2(a,b) * level2(b,a))
  * monge-elkan(a,b) = average( for s in a | max( for q in b | metric(s,q))
  * </code>
  * <p>
@@ -72,10 +72,10 @@ public final class Level2 implements ListMetric<String> {
 		}
 
 		// calculates normalized_similarity(a,b)
-		return (float) sqrt(mongeElkan(a, b) * mongeElkan(b, a));
+		return (float) sqrt(level2(a, b) * level2(b, a));
 	}
 
-	private float mongeElkan(List<String> a, List<String> b) {
+	private float level2(List<String> a, List<String> b) {
 		// calculates average( for s in a | max( for q in b | metric(s,q))
 		float sum = 0.0f;
 
