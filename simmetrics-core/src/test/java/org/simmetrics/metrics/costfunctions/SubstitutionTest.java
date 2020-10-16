@@ -20,98 +20,98 @@
 
 package org.simmetrics.metrics.costfunctions;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.simmetrics.metrics.functions.Substitution;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.simmetrics.matchers.ImplementsToString.implementsToString;
 import static org.simmetrics.matchers.ToStringContainsSimpleClassName.toStringContainsSimpleClassName;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.simmetrics.metrics.functions.Substitution;
-
 public abstract class SubstitutionTest {
 
-	protected static class T {
-		protected final float cost;
-		protected final String string1;
-		protected final String string2;
-		protected final int string1Index;
-		protected final int string2Index;
+    protected static class T {
+        protected final float cost;
+        protected final String string1;
+        protected final String string2;
+        protected final int string1Index;
+        protected final int string2Index;
 
-		public T(float cost, String string1, int string1Index, String string2,
-				int string2Index) {
-			this.string1 = string1;
-			this.string1Index = string1Index;
-			this.string2 = string2;
-			this.string2Index = string2Index;
-			this.cost = cost;
-		}
+        public T(float cost, String string1, int string1Index, String string2,
+                int string2Index) {
+            this.string1 = string1;
+            this.string1Index = string1Index;
+            this.string2 = string2;
+            this.string2Index = string2Index;
+            this.cost = cost;
+        }
 
-	}
+    }
 
-	private static final float DEFAULT_DELTA = 0.0001f;
-	private float delta;
+    private static final float DEFAULT_DELTA = 0.0001f;
+    private float delta;
 
-	protected Substitution cost;
+    protected Substitution cost;
 
-	protected abstract Substitution getCost();
+    protected abstract Substitution getCost();
 
-	protected abstract T[] getTests();
+    protected abstract T[] getTests();
 
-	@Before
-	public void setUp() throws Exception {
-		cost = getCost();
-		delta = getDelta();
-	}
+    @BeforeEach
+    public void setUp() throws Exception {
+        cost = getCost();
+        delta = getDelta();
+    }
 
-	protected float getDelta() {
-		return DEFAULT_DELTA;
-	}
+    protected float getDelta() {
+        return DEFAULT_DELTA;
+    }
 
-	@Test
-	public void testGetSimilarity() {
-		for (T t : getTests()) {
+    @Test
+    void testGetSimilarity() {
+        for (T t : getTests()) {
 
-			float actuall = cost.compare(t.string1, t.string1Index, t.string2,
-					t.string2Index);
+            float actuall = cost.compare(t.string1, t.string1Index, t.string2,
+                    t.string2Index);
 
-			String costMessage = "Cost must fall within [%.3f - %.3f] range";
-			costMessage = String.format(costMessage, cost.min(),
-					cost.max());
-			assertTrue(costMessage, cost.min() <= actuall
-					&& actuall <= cost.max());
+            String costMessage = "Cost must fall within [%.3f - %.3f] range";
+            costMessage = String.format(costMessage, cost.min(),
+                    cost.max());
+            assertTrue(cost.min() <= actuall
+                    && actuall <= cost.max(), costMessage);
 
-			String message = String.format("\"%s\" vs \"%s\"",
-					t.string1.charAt(t.string1Index),
-					t.string2.charAt(t.string2Index));
-			assertEquals(message, t.cost, actuall, delta);
-		}
-	}
+            String message = String.format("\"%s\" vs \"%s\"",
+                    t.string1.charAt(t.string1Index),
+                    t.string2.charAt(t.string2Index));
+            assertEquals(t.cost, actuall, delta, message);
+        }
+    }
 
-	public void generateTest() {
-		for (T t : getTests()) {
-			float actuall = cost.compare(t.string1, t.string1Index, t.string2,
-					t.string2Index);
-			String message = String.format(
-					"new T(%.4ff, testString1, %s, testString2, %s),", actuall,
-					t.string1Index, t.string2Index);
-			System.out.println(message);
-		}
-	}
+    public void generateTest() {
+        for (T t : getTests()) {
+            float actuall = cost.compare(t.string1, t.string1Index, t.string2,
+                    t.string2Index);
+            String message = String.format(
+                    "new T(%.4ff, testString1, %s, testString2, %s),", actuall,
+                    t.string1Index, t.string2Index);
+            System.out.println(message);
+        }
+    }
 
-	@Test
-	public final void shouldImplementToString() {
-		assertThat(cost, implementsToString());
-		assertThat(cost, toStringContainsSimpleClassName());
-	}
+    @Test
+    final void shouldImplementToString() {
+        assertThat(cost, implementsToString());
+        assertThat(cost, toStringContainsSimpleClassName());
+    }
 
-	protected static void assertToStringContains(Substitution metric,
-			String content) {
-		String string = metric.toString();
-		String message = String.format("%s must contain %s ", string, content);
+    protected static void assertToStringContains(Substitution metric,
+            String content) {
+        String string = metric.toString();
+        String message = String.format("%s must contain %s ", string, content);
 
-		assertTrue(message, message.contains(content));
-	}
+        assertTrue(message.contains(content), message);
+    }
 
 }

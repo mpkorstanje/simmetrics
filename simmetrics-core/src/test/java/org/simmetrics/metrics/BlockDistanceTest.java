@@ -23,8 +23,6 @@ package org.simmetrics.metrics;
 import static java.util.Arrays.asList;
 import static org.simmetrics.tokenizers.Tokenizers.qGram;
 
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
 import org.simmetrics.Distance;
 import org.simmetrics.Metric;
 import org.simmetrics.MultisetDistanceTest;
@@ -32,8 +30,7 @@ import org.simmetrics.MultisetMetricTest;
 
 import com.google.common.collect.Multiset;
 
-@RunWith(Enclosed.class)
-public final class BlockDistanceTest {
+final class BlockDistanceTest {
 
 	public final static class DistanceTest extends MultisetDistanceTest {
 

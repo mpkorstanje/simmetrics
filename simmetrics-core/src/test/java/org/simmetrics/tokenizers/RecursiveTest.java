@@ -19,10 +19,12 @@
  */
 package org.simmetrics.tokenizers;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.tokenizers.Tokenizers.Recursive;
 
 import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.simmetrics.tokenizers.Tokenizers.qGram;
 import static org.simmetrics.tokenizers.Tokenizers.whitespace;
 
@@ -33,7 +35,7 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class RecursiveTest extends TokenizerTest {
+class RecursiveTest extends TokenizerTest {
 	
 	@Override
 	protected T[] getTests() {
@@ -49,9 +51,9 @@ public class RecursiveTest extends TokenizerTest {
 		return new Recursive(asList(qGram(5), qGram(4), qGram(3), qGram(2)));
 	}
 	
-	@Test(expected = NullPointerException.class)
-	public void shouldThrowForListContainingNull() {
-		new Recursive(asList(whitespace(), null));
+	@Test
+	void shouldThrowForListContainingNull() {
+		assertThrows(NullPointerException.class, () -> new Recursive(asList(whitespace(), null)));
 	}
 	
 	public void shouldCopyListOfTokenizers() {

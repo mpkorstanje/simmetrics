@@ -21,18 +21,16 @@
 package org.simmetrics.metrics;
 
 import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.Distance;
 import org.simmetrics.ListDistanceTest;
 import org.simmetrics.StringDistanceTest;
 
-@RunWith(Enclosed.class)
-public final class HammingDistanceTest {
+final class HammingDistanceTest {
 
 	public final static class DistanceList extends ListDistanceTest {
 
@@ -55,9 +53,9 @@ public final class HammingDistanceTest {
 				};
 		}
 
-		@Test(expected = IllegalArgumentException.class)
-		public void shouldThrowForDifferentLength() {
-			getMetric().distance(asList("test", "string1"), asList("test"));
+		@Test
+		void shouldThrowForDifferentLength() {
+			assertThrows(IllegalArgumentException.class, () -> getMetric().distance(asList("test", "string1"), asList("test")));
 		}
 
 	}
@@ -79,9 +77,9 @@ public final class HammingDistanceTest {
 					new T(2.0000f, "abcdxy", "abefxy") };
 		}
 
-		@Test(expected = IllegalArgumentException.class)
-		public void shouldThrowForDifferentLength() {
-			getMetric().distance("test", "test string2");
+		@Test
+		void shouldThrowForDifferentLength() {
+			assertThrows(IllegalArgumentException.class, () -> getMetric().distance("test", "test string2"));
 		}
 
 	}

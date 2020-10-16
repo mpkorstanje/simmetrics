@@ -27,7 +27,7 @@ import org.simmetrics.MultisetMetricTest;
 
 import com.google.common.collect.Multiset;
 
-public final class CosineSimilarityTest extends MultisetMetricTest {
+final class CosineSimilarityTest extends MultisetMetricTest {
 
 	@Override
 	protected Metric<Multiset<String>> getMetric() {

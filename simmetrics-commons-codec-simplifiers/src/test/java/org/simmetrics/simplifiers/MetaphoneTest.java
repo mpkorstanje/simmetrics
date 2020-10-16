@@ -19,7 +19,7 @@
  */
 package org.simmetrics.simplifiers;
 
-public class MetaphoneTest extends SimplifierTest {
+class MetaphoneTest extends SimplifierTest {
 
 	@Override
 	protected Simplifier getSimplifier() {

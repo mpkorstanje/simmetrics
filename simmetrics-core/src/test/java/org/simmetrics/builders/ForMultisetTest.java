@@ -20,7 +20,7 @@
 package org.simmetrics.builders;
 
 import com.google.common.collect.Multiset;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.Metric;
 import org.simmetrics.StringMetricTest;
 import org.simmetrics.metrics.Identity;
@@ -28,9 +28,9 @@ import org.simmetrics.builders.StringMetrics.ForMultiset;
 import org.simmetrics.tokenizers.Tokenizer;
 import org.simmetrics.tokenizers.Tokenizers;
 
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
-public class ForMultisetTest extends StringMetricTest {
+class ForMultisetTest extends StringMetricTest {
 
 	private final Tokenizer tokenizer = Tokenizers.whitespace();
 	private final Metric<Multiset<String>> metric = new Identity<>();
@@ -58,12 +58,12 @@ public class ForMultisetTest extends StringMetricTest {
 	}
 	
 	@Test
-	public void shouldReturnTokenizer() {
+	void shouldReturnTokenizer() {
 		assertSame(tokenizer, getMetric().getTokenizer());
 	}
 
 	@Test
-	public void shouldReturnMetric() {
+	void shouldReturnMetric() {
 		assertSame(metric, getMetric().getMetric());
 	}
 }

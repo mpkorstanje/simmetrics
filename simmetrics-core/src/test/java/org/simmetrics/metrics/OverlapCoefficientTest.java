@@ -25,7 +25,7 @@ import static java.util.Arrays.asList;
 import org.simmetrics.SetMetric;
 import org.simmetrics.SetMetricTest;
 
-public final class OverlapCoefficientTest extends SetMetricTest {
+final class OverlapCoefficientTest extends SetMetricTest {
 
 	@Override
 	protected boolean satisfiesCoincidence() {

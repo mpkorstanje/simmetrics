@@ -18,27 +18,28 @@
  * #L%
  */
 package org.simmetrics.example;
-import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StringDistanceExampleTest {
+final class StringDistanceExampleTest {
 	
 	private static final float DELTA = 0.0001f;
 
 	@Test
-	public void example01(){
+	void example01(){
 		assertEquals(30.0000f, StringDistanceExample.example01(), DELTA);
 	}
 	
 	@Test
-	public void example02(){
+	void example02(){
 		assertEquals(2.0000f, StringDistanceExample.example02(), DELTA);
 	}
 	
 	@Test
-	public void example03(){
+	void example03(){
 		assertEquals(4.8989f, StringDistanceExample.example03(), DELTA);
 	}
 

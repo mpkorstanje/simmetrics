@@ -20,17 +20,13 @@
 
 package org.simmetrics.metrics;
 
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.Metric;
 import org.simmetrics.StringMetricTest;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SuppressWarnings({"javadoc", "deprecation"})
-@RunWith(Enclosed.class)
-public class StringMetricsTest {
+final class StringMetricsTest {
 
 	public static class CreateCosineSimilarity extends StringMetricTest {
 
@@ -280,7 +276,7 @@ public class StringMetricsTest {
 	public static class Utilities {
 		//TODO: Test
 		@Test
-		public void blockDistance() {
+		void blockDistance() {
 			assertNotNull(StringMetrics.blockDistance());
 		}
 
@@ -288,48 +284,48 @@ public class StringMetricsTest {
 
 	public static class CreateStringMetrics {
 		@Test
-		public void damerauLevenshtein() {
+		void damerauLevenshtein() {
 			assertNotNull(StringMetrics.damerauLevenshtein());
 		}
 
 		@Test
-		public void jaro() {
+		void jaro() {
 			assertNotNull(StringMetrics.jaro());
 		}
 
 		@Test
-		public void jaroWinkler() {
+		void jaroWinkler() {
 			assertNotNull(StringMetrics.jaroWinkler());
 		}
 
 		@Test
-		public void levenshtein() {
+		void levenshtein() {
 			assertNotNull(StringMetrics.levenshtein());
 		}
 
 		@Test
-		public void needlemanWunch() {
+		void needlemanWunch() {
 			assertNotNull(StringMetrics.needlemanWunch());
 		}
 
 		@Test
-		public void smithWaterman() {
+		void smithWaterman() {
 			assertNotNull(StringMetrics.smithWaterman());
 
 		}
 
 		@Test
-		public void smithWatermanGotoh() {
+		void smithWatermanGotoh() {
 			assertNotNull(StringMetrics.smithWatermanGotoh());
 		}
 
 		@Test
-		public void longestCommonSubsequence() {
+		void longestCommonSubsequence() {
 			assertNotNull(StringMetrics.longestCommonSubSequence());
 		}
 
 		@Test
-		public void longestCommonSubstring() {
+		void longestCommonSubstring() {
 			assertNotNull(StringMetrics.longestCommonSubstring());
 		}
 	}

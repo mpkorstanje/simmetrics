@@ -20,11 +20,7 @@
 
 package org.simmetrics.tokenizers;
 
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
-
-@RunWith(Enclosed.class)
-public class QGramTest {
+class QGramTest {
 
     private static String fromCodePoints(int... codePoints){
         return new String(codePoints, 0, codePoints.length);
@@ -38,7 +34,7 @@ public class QGramTest {
     private static final String linearATwo = fromCodePoints(0x10601);
     private static final String linearAThree = fromCodePoints(0x10602);
 
-    public static final class QGram1 extends TokenizerTest {
+    static final class QGram1 extends TokenizerTest {
 
 
         @Override
@@ -70,7 +66,7 @@ public class QGramTest {
         }
     }
 
-    public static final class QGram2WithPadding extends TokenizerTest {
+    static final class QGram2WithPadding extends TokenizerTest {
 
         @Override
         protected Tokenizer getTokenizer() {
@@ -86,7 +82,7 @@ public class QGramTest {
         }
     }
 
-    public static final class QGram2WithTwoSidedPadding extends TokenizerTest {
+    static final class QGram2WithTwoSidedPadding extends TokenizerTest {
 
         @Override
         protected Tokenizer getTokenizer() {
@@ -102,7 +98,7 @@ public class QGramTest {
         }
     }
 
-    public static final class QGram2WithDefaultPadding extends TokenizerTest {
+    static final class QGram2WithDefaultPadding extends TokenizerTest {
 
         @Override
         protected Tokenizer getTokenizer() {
@@ -127,7 +123,7 @@ public class QGramTest {
         }
     }
 
-    public static final class QGram2 extends TokenizerTest {
+    static final class QGram2 extends TokenizerTest {
 
         @Override
         protected Tokenizer getTokenizer() {
@@ -160,7 +156,7 @@ public class QGramTest {
         }
     }
 
-    public static final class QGram2WithFilter extends TokenizerTest {
+    static final class QGram2WithFilter extends TokenizerTest {
 
         @Override
         protected Tokenizer getTokenizer() {
@@ -182,7 +178,7 @@ public class QGramTest {
         }
     }
 
-    public static final class QGram3WithDefaultPadding extends TokenizerTest {
+    static final class QGram3WithDefaultPadding extends TokenizerTest {
 
         @Override
         protected Tokenizer getTokenizer() {
@@ -208,7 +204,7 @@ public class QGramTest {
         }
     }
 
-    public static final class QGram3 extends TokenizerTest {
+    static final class QGram3 extends TokenizerTest {
 
         @Override
         protected Tokenizer getTokenizer() {

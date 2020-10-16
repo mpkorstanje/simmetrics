@@ -20,22 +20,19 @@
 
 package org.simmetrics.metrics;
 
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
 import org.simmetrics.Metric;
 import org.simmetrics.StringDistance;
 import org.simmetrics.StringDistanceTest;
 import org.simmetrics.StringMetric;
 import org.simmetrics.StringMetricTest;
 
-@RunWith(Enclosed.class)
-public final class JaroWinklerTest   {
+final class JaroWinklerTest   {
 	/**
 	 * Tests references from <a
 	 * href="http://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance"
 	 * >Wikipedia - Jaro Winkler Distance</a>
 	 */
-	public static final class WikipediaExamples extends StringMetricTest {
+	static final class WikipediaExamples extends StringMetricTest {
 		
 		@Override
 		protected boolean satisfiesSubadditivity() {
@@ -63,7 +60,7 @@ public final class JaroWinklerTest   {
 
 	}
 
-	public static final class BoostThreshold extends StringMetricTest {
+	static final class BoostThreshold extends StringMetricTest {
 
 		@Override
 		protected boolean satisfiesSubadditivity() {
@@ -86,7 +83,7 @@ public final class JaroWinklerTest   {
 					new T(0.9428f, "a b c d", "a b c e")};
 		}
 	}
-	public static final class Defaults extends StringMetricTest {
+	static final class Defaults extends StringMetricTest {
 		
 		@Override
 		protected boolean satisfiesSubadditivity() {
@@ -159,7 +156,7 @@ public final class JaroWinklerTest   {
 		}
 	}
 	
-	public static final class DistanceTest extends StringDistanceTest {
+	static final class DistanceTest extends StringDistanceTest {
 		
 		@Override
 		protected boolean satisfiesSubadditivity() {

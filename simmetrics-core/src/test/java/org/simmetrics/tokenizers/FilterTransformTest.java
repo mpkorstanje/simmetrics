@@ -29,7 +29,7 @@ import java.util.function.Function;
 
 import static org.simmetrics.tokenizers.Tokenizers.whitespace;
 
-public class FilterTransformTest extends TokenizerTest {
+class FilterTransformTest extends TokenizerTest {
 
 	private java.util.function.Function<String, String> toUpperCase = String::toUpperCase;
 

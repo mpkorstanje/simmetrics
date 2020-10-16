@@ -19,7 +19,7 @@
  */
 package org.simmetrics.simplifiers;
 
-public class ColognePhoneticTest extends SimplifierTest {
+class ColognePhoneticTest extends SimplifierTest {
 
 	@Override
 	protected Simplifier getSimplifier() {

@@ -19,15 +19,15 @@
  */
 package org.simmetrics.builders;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.Metric;
 import org.simmetrics.StringMetricTest;
 import org.simmetrics.metrics.Identity;
 import org.simmetrics.builders.StringMetrics.ForString;
 
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
-public class ForStringTest extends StringMetricTest{
+class ForStringTest extends StringMetricTest{
 
 	private final Metric<String> metric = new Identity<>();
 	
@@ -50,7 +50,7 @@ public class ForStringTest extends StringMetricTest{
 	}
 		
 	@Test
-	public void shouldReturnMetric(){
+	void shouldReturnMetric(){
 		assertSame(metric, getMetric().getMetric());
 	}
 }

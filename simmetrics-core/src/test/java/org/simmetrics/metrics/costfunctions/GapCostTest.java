@@ -20,14 +20,14 @@
 
 package org.simmetrics.metrics.costfunctions;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.simmetrics.matchers.ImplementsToString.implementsToString;
 import static org.simmetrics.matchers.ToStringContainsSimpleClassName.toStringContainsSimpleClassName;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.metrics.functions.Gap;
 
 public abstract class GapCostTest {
@@ -56,7 +56,7 @@ public abstract class GapCostTest {
 
 	protected abstract T[] getTests();
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		cost = getCost();
 		delta = getDelta();
@@ -67,7 +67,7 @@ public abstract class GapCostTest {
 	}
 
 	@Test
-	public void value() {
+	void value() {
 		for (T t : getTests()) {
 
 			float actuall = cost.value(t.index1, t.index2);
@@ -75,12 +75,12 @@ public abstract class GapCostTest {
 			String costMessage = "Cost %.3f must fall within [%.3f - %.3f] range";
 			costMessage = String.format(costMessage, actuall, cost.min(),
 					cost.max());
-			assertTrue(costMessage, cost.min() <= actuall
-					&& actuall <= cost.max());
+			assertTrue(cost.min() <= actuall
+					&& actuall <= cost.max(), costMessage);
 
 			String message = String.format("\"%s\" vs \"%s\"",
 					t.string.charAt(t.index1), t.string.charAt(t.index2));
-			assertEquals(message, t.cost, actuall, delta);
+			assertEquals(t.cost, actuall, delta, message);
 		}
 	}
 
@@ -95,7 +95,7 @@ public abstract class GapCostTest {
 	}
 
 	@Test
-	public final void shouldImplementToString() {
+	final void shouldImplementToString() {
 		assertThat(cost, implementsToString());
 		assertThat(cost, toStringContainsSimpleClassName());
 	}
@@ -105,7 +105,7 @@ public abstract class GapCostTest {
 		String string = metric.toString();
 		String message = String.format("%s must contain %s ", string, content);
 
-		assertTrue(message, message.contains(content));
+		assertTrue(message.contains(content), message);
 	}
 
 }

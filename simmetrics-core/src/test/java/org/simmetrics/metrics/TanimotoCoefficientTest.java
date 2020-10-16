@@ -25,7 +25,7 @@ import static java.util.Arrays.asList;
 import org.simmetrics.SetMetric;
 import org.simmetrics.SetMetricTest;
 
-public final class TanimotoCoefficientTest extends SetMetricTest {
+final class TanimotoCoefficientTest extends SetMetricTest {
 
 	@Override
 	protected SetMetric<String> getMetric() {

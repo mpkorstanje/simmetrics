@@ -19,11 +19,11 @@
  */
 package org.simmetrics.builders;
 
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.Metric;
 import org.simmetrics.StringMetricTest;
 import org.simmetrics.builders.StringMetrics.ForList;
@@ -31,7 +31,7 @@ import org.simmetrics.metrics.Identity;
 import org.simmetrics.tokenizers.Tokenizer;
 import org.simmetrics.tokenizers.Tokenizers;
 
-public class ForListTest extends StringMetricTest {
+class ForListTest extends StringMetricTest {
 
 	private final Tokenizer tokenizer = Tokenizers.whitespace();
 	private final Metric<List<String>> metric = new Identity<>();
@@ -59,12 +59,12 @@ public class ForListTest extends StringMetricTest {
 	}
 	
 	@Test
-	public void shouldReturnTokenizer() {
+	void shouldReturnTokenizer() {
 		assertSame(tokenizer, getMetric().getTokenizer());
 	}
 
 	@Test
-	public void shouldReturnMetric() {
+	void shouldReturnMetric() {
 		assertSame(metric, getMetric().getMetric());
 	}
 }

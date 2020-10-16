@@ -19,7 +19,7 @@
  */
 package org.simmetrics.simplifiers;
 
-public class CaverPhone1Test extends SimplifierTest {
+class CaverPhone1Test extends SimplifierTest {
 
 	@Override
 	protected Simplifier getSimplifier() {

@@ -23,17 +23,14 @@ package org.simmetrics.metrics;
 import static java.util.Arrays.asList;
 import java.util.Set;
 
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
 import org.simmetrics.Distance;
 import org.simmetrics.SetDistanceTest;
 import org.simmetrics.SetMetric;
 import org.simmetrics.SetMetricTest;
 
-@RunWith(Enclosed.class)
-public class DiceTest {
+class DiceTest {
 	
-	public static final class DistanceTest extends SetDistanceTest {
+	static final class DistanceTest extends SetDistanceTest {
 		@Override
 		protected Distance<Set<String>> getMetric() {
 			return new Dice<>();
@@ -52,7 +49,7 @@ public class DiceTest {
 		}
 	}
 	
-	public static final class MetricTest extends SetMetricTest {
+	static final class MetricTest extends SetMetricTest {
 		@Override
 		protected SetMetric<String> getMetric() {
 			return new Dice<>();

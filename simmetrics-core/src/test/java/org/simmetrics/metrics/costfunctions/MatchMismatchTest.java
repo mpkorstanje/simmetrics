@@ -23,7 +23,7 @@ package org.simmetrics.metrics.costfunctions;
 import org.simmetrics.metrics.functions.MatchMismatch;
 import org.simmetrics.metrics.functions.Substitution;
 
-public class MatchMismatchTest extends SubstitutionTest {
+class MatchMismatchTest extends SubstitutionTest {
 	
 	@Override
 	protected Substitution getCost() {

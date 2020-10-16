@@ -27,8 +27,9 @@ import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.sameInstance;
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.simmetrics.simplifiers.Simplifiers.chain;
 import static org.simmetrics.simplifiers.Simplifiers.normalize;
 import static org.simmetrics.simplifiers.Simplifiers.removeNonWord;
@@ -37,19 +38,15 @@ import static org.simmetrics.simplifiers.Simplifiers.toLowerCase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.simplifiers.Simplifiers.ChainSimplifier;
 
-@SuppressWarnings({ "javadoc", "static-method" })
-@RunWith(Enclosed.class)
-public class SimplifiersTest {
+@SuppressWarnings("static-method")
+class SimplifiersTest {
 
-	public static final class Normalize extends SimplifierTest {
+	static final class Normalize extends SimplifierTest {
 
 		@Override
 		protected Simplifier getSimplifier() {
@@ -65,7 +62,7 @@ public class SimplifiersTest {
 		}
 	}
 	
-	public static final class WithChainSimplifier extends SimplifierTest {
+	static final class WithChainSimplifier extends SimplifierTest {
 
 		@Override
 		protected Simplifier getSimplifier() {
@@ -89,7 +86,7 @@ public class SimplifiersTest {
 
 	}
 
-	public static final class WithEmpty extends SimplifierTest {
+	static final class WithEmpty extends SimplifierTest {
 
 		@Override
 		protected Simplifier getSimplifier() {
@@ -104,7 +101,7 @@ public class SimplifiersTest {
 
 	}
 
-	public static final class WithTwo extends SimplifierTest {
+	static final class WithTwo extends SimplifierTest {
 
 		@Override
 		protected Simplifier getSimplifier() {
@@ -119,7 +116,7 @@ public class SimplifiersTest {
 
 	}
 
-	public static final class RemoveDiacritics extends SimplifierTest {
+	static final class RemoveDiacritics extends SimplifierTest {
 
 		@Override
 		protected Simplifier getSimplifier() {
@@ -136,7 +133,7 @@ public class SimplifiersTest {
 
 	}
 
-	public static final class ToUpperCase extends SimplifierTest {
+	static final class ToUpperCase extends SimplifierTest {
 
 		@Override
 		protected Simplifier getSimplifier() {
@@ -150,7 +147,7 @@ public class SimplifiersTest {
 
 	}
 
-	public static final class ToLowerCase extends SimplifierTest {
+	static final class ToLowerCase extends SimplifierTest {
 
 		@Override
 		protected Simplifier getSimplifier() {
@@ -164,7 +161,7 @@ public class SimplifiersTest {
 
 	}
 
-	public static final class ReplaceNonWordCharacters extends SimplifierTest {
+	static final class ReplaceNonWordCharacters extends SimplifierTest {
 
 		@Override
 		protected Simplifier getSimplifier() {
@@ -181,7 +178,7 @@ public class SimplifiersTest {
 	
 	
 
-	public static final class ReplaceRegex extends SimplifierTest {
+	static final class ReplaceRegex extends SimplifierTest {
 
 		@Override
 		protected Simplifier getSimplifier() {
@@ -196,7 +193,7 @@ public class SimplifiersTest {
 
 	}
 
-	public static final class RemoveRegex extends SimplifierTest {
+	static final class RemoveRegex extends SimplifierTest {
 
 		@Override
 		protected Simplifier getSimplifier() {
@@ -276,31 +273,31 @@ public class SimplifiersTest {
 
 	}
 
-	public static final class ShouldThrowFor  {
+	static final class ShouldThrowFor  {
 
-		@Test(expected = IllegalArgumentException.class)
-		public void chainWithListContainingNull() {
-			chain(Arrays.asList(toLowerCase(), null, removeNonWord()));
-		}
-
-		@Test(expected = IllegalArgumentException.class)
-		public void chainWithNull() {
-			chain((Simplifier) null);
-		}
-
-		@Test(expected = IllegalArgumentException.class)
-		public void chainWithNullInVarArg() {
-			chain(toLowerCase(), null, removeNonWord());
+		@Test
+		void chainWithListContainingNull() {
+			assertThrows(IllegalArgumentException.class, () -> chain(Arrays.asList(toLowerCase(), null, removeNonWord())));
 		}
 
 		@Test
-		public void chainWithSingle() {
+		void chainWithNull() {
+			assertThrows(IllegalArgumentException.class, () -> chain((Simplifier) null));
+		}
+
+		@Test
+		void chainWithNullInVarArg() {
+			assertThrows(IllegalArgumentException.class, () -> chain(toLowerCase(), null, removeNonWord()));
+		}
+
+		@Test
+		void chainWithSingle() {
 			Simplifier lower = toLowerCase();
 			assertSame(lower, chain(lower));
 		}
 
 		@Test
-		public void chainWithSingletonList() {
+		void chainWithSingletonList() {
 			Simplifier lower = toLowerCase();
 			assertSame(lower, chain(singletonList(lower)));
 		}

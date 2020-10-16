@@ -23,15 +23,16 @@ package org.simmetrics;
 import static com.google.common.primitives.Floats.max;
 import static java.lang.String.format;
 import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.simmetrics.matchers.ImplementsToString.implementsToString;
 import static org.simmetrics.matchers.ToStringContainsSimpleClassName.toStringContainsSimpleClassName;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public abstract class MetricTest<K> {
 
@@ -81,18 +82,18 @@ public abstract class MetricTest<K> {
 		String message1 = String.format(
 				"Similarity %s-%s %f must fall within [0.0 - 1.0] range", a, b,
 				similarity);
-		assertTrue(message1, 0.0f <= similarity && similarity <= 1.0f);
+		assertTrue(0.0f <= similarity && similarity <= 1.0f, message1);
 	}
 
 	private static <K> void testReflexive(Metric<K> metric, K a, float delta) {
-		assertEquals("metric should be reflexive for " + a, 1.0f, metric.compare(a, a), delta);
+		assertEquals(1.0f, metric.compare(a, a), delta, "metric should be reflexive for " + a);
 	}
 
 	private static <K> void testSimilarity(Metric<K> metric, K a, K b,
 			float expected, float delta) {
 		float similarity = metric.compare(a, b);
 		String message = String.format("\"%s\" vs \"%s\"", a, b);
-		assertEquals(message, expected, similarity, delta);
+		assertEquals(expected, similarity, delta, message);
 	}
 
 	private static <K> boolean testSubadditivity(Metric<K> metric, K a, K b, K c) {
@@ -112,7 +113,7 @@ public abstract class MetricTest<K> {
 
 		String message = String.format(
 				"Similarity relation \"%s\" vs \"%s\" must be symmetric", a, b);
-		assertEquals(message, similarityReversed, similarity, delta);
+		assertEquals(similarityReversed, similarity, delta, message);
 
 	}
 
@@ -144,7 +145,7 @@ public abstract class MetricTest<K> {
 		return true;
 	}
 	
-	@Before
+	@BeforeEach
 	public final void setUp() throws Exception {
 		this.delta = getDelta();
 		this.metric = getMetric();
@@ -152,24 +153,24 @@ public abstract class MetricTest<K> {
 	}
 
 	@Test
-	public final void empty() {
+	final void empty() {
 		assertEquals(1.0f, metric.compare(getEmpty(), getEmpty()), delta);
 	}
 
 	@Test
-	public final void nullPointerException() {
+	final void nullPointerException() {
 		for (TestCase<K> t : tests) {
 			testNullPointerException(metric, t.a, t.b);
 		}
 	}
 
 	@Test
-	public final void coincidence() {
+	final void coincidence() {
 		if (satisfiesCoincidence()) {
 			for (TestCase<K> t : tests) {
-				assertTrue(
+				assertTrue(testCoincidence(metric, t.a, t.b),
 						format("coincidence did not hold for %s and %s", t.a,
-								t.b), testCoincidence(metric, t.a, t.b));
+										t.b));
 			}
 		} else {
 			for (TestCase<K> t : tests) {
@@ -182,19 +183,15 @@ public abstract class MetricTest<K> {
 	}
 
 	@Test
-	public final void subadditivity() {
+	final void subadditivity() {
 		if (satisfiesSubadditivity()) {
 			for (TestCase<K> n : tests) {
 				for (TestCase<K> m : tests) {
-					assertTrue(
-							format("triangle ineqaulity must hold for %s, %s, %s",
-									n.a, n.b, m.a),
-							testSubadditivity(metric, n.a, n.b, m.a));
-					assertTrue(
-							format("triangle ineqaulity must hold for %s, %s, %s",
-									n.a, n.b, m.b),
-							testSubadditivity(metric, n.a, n.b, m.b));
-					
+					assertTrue(testSubadditivity(metric, n.a, n.b, m.a), format("triangle ineqaulity must hold for %s, %s, %s",
+												n.a, n.b, m.a));
+					assertTrue(testSubadditivity(metric, n.a, n.b, m.b), format("triangle ineqaulity must hold for %s, %s, %s",
+												n.a, n.b, m.b));
+
 				}
 			}
 		} else {
@@ -211,14 +208,14 @@ public abstract class MetricTest<K> {
 	}
 
 	@Test
-	public final void range() {
+	final void range() {
 		for (TestCase<K> t : tests) {
 			testRange(metric, t.a, t.b);
 		}
 	}
 
 	@Test
-	public final void reflexive() {
+	final void reflexive() {
 		for (TestCase<K> t : tests) {
 			testReflexive(metric, t.a, delta);
 			testReflexive(metric, t.b, delta);
@@ -226,7 +223,7 @@ public abstract class MetricTest<K> {
 	}
 
 	@Test
-	public final void similarity() {
+	final void similarity() {
 		for (TestCase<K> t : tests) {
 			testSimilarity(metric, t.a, t.b, t.similarity, delta);
 		}
@@ -241,14 +238,14 @@ public abstract class MetricTest<K> {
 	}
 
 	@Test
-	public final void symmetric() {
+	final void symmetric() {
 		for (TestCase<K> t : tests) {
 			testSymmetric(metric, t.a, t.b, delta);
 		}
 	}
 
 	@Test
-	public final void containsEmptyVsNonEmptyTest() {
+	final void containsEmptyVsNonEmptyTest() {
 		final K empty = getEmpty();
 		for (TestCase<K> t : tests) {
 			if (t.a.equals(empty) ^ t.b.equals(empty)) {
@@ -260,12 +257,12 @@ public abstract class MetricTest<K> {
 	}
 
 	@Test
-	public final void shouldImplementToString() {
+	final void shouldImplementToString() {
 		assertThat(metric, implementsToString());
 	}
 	
 	@Test
-	public final void shouldContainSimpleClassNameToString() {
+	final void shouldContainSimpleClassNameToString() {
 		if(toStringIncludesSimpleClassName()){
 			assertThat(metric, toStringContainsSimpleClassName());
 		} else {

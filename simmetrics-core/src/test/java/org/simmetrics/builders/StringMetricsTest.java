@@ -21,9 +21,7 @@
 package org.simmetrics.builders;
 
 import com.google.common.collect.Multiset;
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.Metric;
 import org.simmetrics.StringMetric;
 import org.simmetrics.StringMetricTest;
@@ -44,16 +42,14 @@ import org.simmetrics.tokenizers.Tokenizers;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.simmetrics.simplifiers.Simplifiers.toLowerCase;
 import static org.simmetrics.simplifiers.SimplifiersMatcher.chain;
 import static org.simmetrics.tokenizers.Tokenizers.whitespace;
 
-@SuppressWarnings({ "javadoc", "deprecation" })
-@RunWith(Enclosed.class)
-public class StringMetricsTest {
+final class StringMetricsTest {
 
 	public static class Create {
 
@@ -66,13 +62,13 @@ public class StringMetricsTest {
 		private final Tokenizer tokenizer = Tokenizers.whitespace();
 
 		@Test
-		public void shouldReturnSame() {
+		void shouldReturnSame() {
 			StringMetric s = new ForString(metric);
 			assertSame(s, StringMetrics.create(s));
 		}
 
 		@Test
-		public void shouldReturnForString() {
+		void shouldReturnForString() {
 			StringMetric wrapped = StringMetrics.create(metric);
 			assertEquals(ForString.class, wrapped.getClass());
 			ForString forString = (ForString) wrapped;
@@ -80,7 +76,7 @@ public class StringMetricsTest {
 		}
 
 		@Test
-		public void shouldReturnForStringWithSimplifier() {
+		void shouldReturnForStringWithSimplifier() {
 			ForString forString = new ForString(metric);
 			StringMetric wrapped = StringMetrics.create(forString, simplifier);
 
@@ -91,7 +87,7 @@ public class StringMetricsTest {
 		}
 
 		@Test
-		public void shouldReturnForStringWithChainedSimplifiers() {
+		void shouldReturnForStringWithChainedSimplifiers() {
 			ForStringWithSimplifier forString = new ForStringWithSimplifier(metric, simplifier);
 			StringMetric wrapped = StringMetrics.create(forString, simplifier2);
 
@@ -101,7 +97,7 @@ public class StringMetricsTest {
 		}
 
 		@Test
-		public void shouldReturnForListWithSimplifier() {
+		void shouldReturnForListWithSimplifier() {
 			ForList forList = new ForList(listMetric, tokenizer);
 			StringMetric wrapped = StringMetrics.create(forList, simplifier);
 
@@ -113,7 +109,7 @@ public class StringMetricsTest {
 		}
 
 		@Test
-		public void shouldReturnForListWithChainedSimplifiers() {
+		void shouldReturnForListWithChainedSimplifiers() {
 			ForListWithSimplifier forList = new ForListWithSimplifier(listMetric, simplifier, tokenizer);
 			StringMetric wrapped = StringMetrics.create(forList, simplifier2);
 
@@ -126,7 +122,7 @@ public class StringMetricsTest {
 		}
 
 		@Test
-		public void shouldReturnForSetWithSimplifier() {
+		void shouldReturnForSetWithSimplifier() {
 			ForSet forSet = new ForSet(setMetric, tokenizer);
 			StringMetric wrapped = StringMetrics.create(forSet, simplifier);
 
@@ -139,7 +135,7 @@ public class StringMetricsTest {
 		}
 
 		@Test
-		public void shouldReturnForSetWithChainedSimplifiers() {
+		void shouldReturnForSetWithChainedSimplifiers() {
 			ForSetWithSimplifier forSet = new ForSetWithSimplifier(setMetric, simplifier, tokenizer);
 			StringMetric wrapped = StringMetrics.create(forSet, simplifier2);
 
@@ -159,7 +155,7 @@ public class StringMetricsTest {
 		private Simplifier simplifier = Simplifiers.toLowerCase();
 
 		@Test
-		public void shouldReturnForList() {
+		void shouldReturnForList() {
 
 			StringMetric wrapped = StringMetrics.createForListMetric(metric, tokenizer);
 			assertEquals(ForList.class, wrapped.getClass());
@@ -169,7 +165,7 @@ public class StringMetricsTest {
 		}
 
 		@Test
-		public void shouldReturnForListWithSimplifier() {
+		void shouldReturnForListWithSimplifier() {
 
 			StringMetric wrapped = StringMetrics.createForListMetric(metric, simplifier, tokenizer);
 			assertEquals(ForListWithSimplifier.class, wrapped.getClass());
@@ -188,7 +184,7 @@ public class StringMetricsTest {
 		private Simplifier simplifier = Simplifiers.toLowerCase();
 
 		@Test
-		public void shouldReturnForSet() {
+		void shouldReturnForSet() {
 
 			StringMetric wrapped = StringMetrics.createForSetMetric(metric, tokenizer);
 			assertEquals(ForSet.class, wrapped.getClass());
@@ -198,7 +194,7 @@ public class StringMetricsTest {
 		}
 
 		@Test
-		public void shouldReturnForSetWithSimplifier() {
+		void shouldReturnForSetWithSimplifier() {
 
 			StringMetric wrapped = StringMetrics.createForSetMetric(metric, simplifier, tokenizer);
 			assertEquals(ForSetWithSimplifier.class, wrapped.getClass());
@@ -217,7 +213,7 @@ public class StringMetricsTest {
 		private Simplifier simplifier = Simplifiers.toLowerCase();
 
 		@Test
-		public void shouldReturnForSet() {
+		void shouldReturnForSet() {
 
 			StringMetric wrapped = StringMetrics.createForMultisetMetric(metric, tokenizer);
 			assertEquals(ForMultiset.class, wrapped.getClass());
@@ -227,7 +223,7 @@ public class StringMetricsTest {
 		}
 
 		@Test
-		public void shouldReturnForSetWithSimplifier() {
+		void shouldReturnForSetWithSimplifier() {
 
 			StringMetric wrapped = StringMetrics.createForMultisetMetric(metric, simplifier, tokenizer);
 			assertEquals(ForMultisetWithSimplifier.class, wrapped.getClass());

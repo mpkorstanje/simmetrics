@@ -25,7 +25,7 @@ import org.simmetrics.tokenizers.Tokenizer;
 import com.google.common.cache.Cache;
 import com.google.common.collect.Multiset;
 
-public class CachingMultisetTokenizerTest extends CachingTokenizerTest<Multiset<String>> {
+class CachingMultisetTokenizerTest extends CachingTokenizerTest<Multiset<String>> {
 
 	
 	

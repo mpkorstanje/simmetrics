@@ -22,8 +22,6 @@ package org.simmetrics.metrics;
 
 import static java.util.Arrays.asList;
 
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
 import org.simmetrics.Distance;
 import org.simmetrics.MultisetDistanceTest;
 import org.simmetrics.MultisetMetric;
@@ -31,10 +29,9 @@ import org.simmetrics.MultisetMetricTest;
 
 import com.google.common.collect.Multiset;
 
-@RunWith(Enclosed.class)
-public final class GeneralizedJaccardTest  {
+final class GeneralizedJaccardTest  {
 	
-	public static final class DistanceTest extends MultisetDistanceTest {
+	static final class DistanceTest extends MultisetDistanceTest {
 		
 		@Override
 		protected Distance<Multiset<String>> getMetric() {
@@ -62,7 +59,7 @@ public final class GeneralizedJaccardTest  {
 	}
 	
 
-	public static final class MetricTest extends MultisetMetricTest {
+	static final class MetricTest extends MultisetMetricTest {
 		
 
 		@Override

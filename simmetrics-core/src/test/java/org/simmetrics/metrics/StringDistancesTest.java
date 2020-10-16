@@ -20,16 +20,12 @@
 
 package org.simmetrics.metrics;
 
-import static org.junit.Assert.assertNotNull;
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.StringDistance;
 import org.simmetrics.StringDistanceTest;
-import org.simmetrics.metrics.StringDistances;
 
-@RunWith(Enclosed.class)
-public class StringDistancesTest {
+final class StringDistancesTest {
 
 	public static class CreateIdentity extends StringDistanceTest {
 
@@ -247,7 +243,7 @@ public class StringDistancesTest {
 	public static class Utilities {
 		//TODO: Test
 		@Test
-		public void blockMetric() {
+		void blockMetric() {
 			assertNotNull(StringDistances.blockDistance());
 		}
 
@@ -255,37 +251,37 @@ public class StringDistancesTest {
 
 	public static class CreateStringDistances {
 		@Test
-		public void damerauLevenshtein() {
+		void damerauLevenshtein() {
 			assertNotNull(StringDistances.damerauLevenshtein());
 		}
 
 		@Test
-		public void jaro() {
+		void jaro() {
 			assertNotNull(StringDistances.jaro());
 		}
 
 		@Test
-		public void jaroWinkler() {
+		void jaroWinkler() {
 			assertNotNull(StringDistances.jaroWinkler());
 		}
 
 		@Test
-		public void levenshtein() {
+		void levenshtein() {
 			assertNotNull(StringDistances.levenshtein());
 		}
 		
 		@Test
-		public void longestCommonSubsequence() {
+		void longestCommonSubsequence() {
 			assertNotNull(StringDistances.longestCommonSubsequence());
 		}
 		
 		@Test
-		public void longestCommonSubstring() {
+		void longestCommonSubstring() {
 			assertNotNull(StringDistances.longestCommonSubstring());
 		}
 		
 		@Test
-		public void hammingDistance() {
+		void hammingDistance() {
 			assertNotNull(StringDistances.hammingDistance());
 		}
 	}

@@ -19,14 +19,16 @@
  */
 package org.simmetrics.simplifiers;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static java.lang.String.format;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.simmetrics.matchers.ImplementsToString.implementsToString;
-import org.junit.Before;
-import org.junit.Test;
 
 public abstract class SimplifierTest {
 	protected static final class T {
@@ -54,7 +56,7 @@ public abstract class SimplifierTest {
 	protected T[] tests;
 
 	@Test
-	public void containsEmptyTest() {
+	void containsEmptyTest() {
 		for (T t : tests) {
 			if (t.string.isEmpty()) {
 				return;
@@ -68,27 +70,27 @@ public abstract class SimplifierTest {
 
 	protected abstract T[] getTests();
 
-	@Before
+	@BeforeEach
 	public final void setUp() throws Exception {
 		simplifier = getSimplifier();
 		tests = getTests();
 	}
 
 	@Test
-	public final void shouldImplementToString() {
+	final void shouldImplementToString() {
 		assertThat(simplifier, implementsToString());
 	}
 
 	@Test
-	public final void simplfy() {
+	final void simplfy() {
 		for (T t : tests) {
 			testSimplified(t.expected, simplifier.simplify(t.string));
 		}
 	}
 
-	@Test(expected = NullPointerException.class)
-	public final void simplfyNullPointerException() {
-		simplifier.simplify(null);
+	@Test
+	final void simplfyNullPointerException() {
+		assertThrows(NullPointerException.class, () -> simplifier.simplify(null));
 	}
 
 	public final void generateSimplified() {

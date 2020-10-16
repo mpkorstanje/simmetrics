@@ -20,7 +20,7 @@
 
 package org.simmetrics.tokenizers;
 
-public class WhitespaceTest extends TokenizerTest {
+final class WhitespaceTest extends TokenizerTest {
 
 	@Override
 	protected Tokenizer getTokenizer() {

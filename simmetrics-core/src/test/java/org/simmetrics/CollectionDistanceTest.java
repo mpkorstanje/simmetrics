@@ -19,11 +19,12 @@
  */
 package org.simmetrics;
 
-import static org.junit.Assert.fail;
-import java.util.Collection;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public abstract class CollectionDistanceTest<V, K extends Collection<V>> extends DistanceTest<K> {
+import static org.junit.jupiter.api.Assertions.fail;
+import java.util.Collection;
+
+abstract class CollectionDistanceTest<V, K extends Collection<V>> extends DistanceTest<K> {
 
 	protected static class C<V, K extends Collection<V>> extends TestCase<K> {
 
@@ -72,7 +73,7 @@ public abstract class CollectionDistanceTest<V, K extends Collection<V>> extends
 	protected abstract K getCollectionContainNull();
 
 	@Test
-	public void nullValues() {
+	void nullValues() {
 		if (supportsNullValues()) {
 			testsShouldContainCollectionWithNullVsWithouthNull(getTests());
 		} else {

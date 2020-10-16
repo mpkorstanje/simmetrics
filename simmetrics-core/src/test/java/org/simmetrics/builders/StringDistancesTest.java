@@ -20,8 +20,8 @@
 
 package org.simmetrics.builders;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.simmetrics.simplifiers.Simplifiers.toLowerCase;
 import static org.simmetrics.simplifiers.SimplifiersMatcher.chain;
@@ -30,9 +30,7 @@ import static org.simmetrics.tokenizers.Tokenizers.whitespace;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.Distance;
 import org.simmetrics.StringDistance;
 import org.simmetrics.StringDistanceTest;
@@ -52,11 +50,9 @@ import org.simmetrics.tokenizers.Tokenizers;
 
 import com.google.common.collect.Multiset;
 
-@SuppressWarnings({ "javadoc" })
-@RunWith(Enclosed.class)
-public class StringDistancesTest {
+final class StringDistancesTest {
 
-	public static final class Create {
+	static final class Create {
 
 		private final Distance<String> metric = new Identity<>();
 		private final Distance<List<String>> listDistance = new Identity<>();
@@ -67,13 +63,13 @@ public class StringDistancesTest {
 		private final Tokenizer tokenizer = Tokenizers.whitespace();
 
 		@Test
-		public void shouldReturnSame() {
+		void shouldReturnSame() {
 			StringDistance s = new ForString(metric);
 			assertSame(s, StringDistances.create(s));
 		}
 
 		@Test
-		public void shouldReturnForString() {
+		void shouldReturnForString() {
 			StringDistance wrapped = StringDistances.create(metric);
 			assertEquals(ForString.class, wrapped.getClass());
 			ForString forString = (ForString) wrapped;
@@ -81,7 +77,7 @@ public class StringDistancesTest {
 		}
 
 		@Test
-		public void shouldReturnForStringWithSimplifier() {
+		void shouldReturnForStringWithSimplifier() {
 			ForString forString = new ForString(metric);
 			StringDistance wrapped = StringDistances.create(forString, simplifier);
 
@@ -92,7 +88,7 @@ public class StringDistancesTest {
 		}
 
 		@Test
-		public void shouldReturnForStringWithChainedSimplifiers() {
+		void shouldReturnForStringWithChainedSimplifiers() {
 			ForStringWithSimplifier forString = new ForStringWithSimplifier(metric, simplifier);
 			StringDistance wrapped = StringDistances.create(forString, simplifier2);
 
@@ -102,7 +98,7 @@ public class StringDistancesTest {
 		}
 
 		@Test
-		public void shouldReturnForListWithSimplifier() {
+		void shouldReturnForListWithSimplifier() {
 			ForList forList = new ForList(listDistance, tokenizer);
 			StringDistance wrapped = StringDistances.create(forList, simplifier);
 
@@ -114,7 +110,7 @@ public class StringDistancesTest {
 		}
 
 		@Test
-		public void shouldReturnForListWithChainedSimplifiers() {
+		void shouldReturnForListWithChainedSimplifiers() {
 			ForListWithSimplifier forList = new ForListWithSimplifier(listDistance, simplifier, tokenizer);
 			StringDistance wrapped = StringDistances.create(forList, simplifier2);
 
@@ -127,7 +123,7 @@ public class StringDistancesTest {
 		}
 
 		@Test
-		public void shouldReturnForSetWithSimplifier() {
+		void shouldReturnForSetWithSimplifier() {
 			ForSet forSet = new ForSet(setDistance, tokenizer);
 			StringDistance wrapped = StringDistances.create(forSet, simplifier);
 
@@ -140,7 +136,7 @@ public class StringDistancesTest {
 		}
 
 		@Test
-		public void shouldReturnForSetWithChainedSimplifiers() {
+		void shouldReturnForSetWithChainedSimplifiers() {
 			ForSetWithSimplifier forSet = new ForSetWithSimplifier(setDistance, simplifier, tokenizer);
 			StringDistance wrapped = StringDistances.create(forSet, simplifier2);
 
@@ -153,14 +149,14 @@ public class StringDistancesTest {
 
 	}
 
-	public static final class CreateForList {
+	static final class CreateForList {
 
 		private final Distance<List<String>> metric = new Identity<>();
 		private final Tokenizer tokenizer = Tokenizers.whitespace();
 		private final Simplifier simplifier = Simplifiers.toLowerCase();
 
 		@Test
-		public void shouldReturnForList() {
+		void shouldReturnForList() {
 
 			StringDistance wrapped = StringDistances.createForListDistance(metric, tokenizer);
 			assertEquals(ForList.class, wrapped.getClass());
@@ -170,7 +166,7 @@ public class StringDistancesTest {
 		}
 
 		@Test
-		public void shouldReturnForListWithSimplifier() {
+		void shouldReturnForListWithSimplifier() {
 
 			StringDistance wrapped = StringDistances.createForListDistance(metric, simplifier, tokenizer);
 			assertEquals(ForListWithSimplifier.class, wrapped.getClass());
@@ -182,14 +178,14 @@ public class StringDistancesTest {
 
 	}
 
-	public static final class CreateForSet {
+	static final class CreateForSet {
 
 		private final Distance<Set<String>> metric = new Identity<>();
 		private final Tokenizer tokenizer = Tokenizers.whitespace();
 		private final Simplifier simplifier = Simplifiers.toLowerCase();
 
 		@Test
-		public void shouldReturnForSet() {
+		void shouldReturnForSet() {
 
 			StringDistance wrapped = StringDistances.createForSetDistance(metric, tokenizer);
 			assertEquals(ForSet.class, wrapped.getClass());
@@ -199,7 +195,7 @@ public class StringDistancesTest {
 		}
 
 		@Test
-		public void shouldReturnForSetWithSimplifier() {
+		void shouldReturnForSetWithSimplifier() {
 
 			StringDistance wrapped = StringDistances.createForSetDistance(metric, simplifier, tokenizer);
 			assertEquals(ForSetWithSimplifier.class, wrapped.getClass());
@@ -211,14 +207,14 @@ public class StringDistancesTest {
 
 	}
 	
-	public static final class CreateForMultiset {
+	static final class CreateForMultiset {
 
 		private final Distance<Multiset<String>> metric = new Identity<>();
 		private final Tokenizer tokenizer = Tokenizers.whitespace();
 		private final Simplifier simplifier = Simplifiers.toLowerCase();
 
 		@Test
-		public void shouldReturnForSet() {
+		void shouldReturnForSet() {
 
 			StringDistance wrapped = StringDistances.createForMultisetDistance(metric, tokenizer);
 			assertEquals(ForMultiset.class, wrapped.getClass());
@@ -228,7 +224,7 @@ public class StringDistancesTest {
 		}
 
 		@Test
-		public void shouldReturnForSetWithSimplifier() {
+		void shouldReturnForSetWithSimplifier() {
 
 			StringDistance wrapped = StringDistances.createForMultisetDistance(metric, simplifier, tokenizer);
 			assertEquals(ForMultisetWithSimplifier.class, wrapped.getClass());
@@ -240,7 +236,7 @@ public class StringDistancesTest {
 
 	}
 
-	public static final class ForListTest extends StringDistanceTest {
+	static final class ForListTest extends StringDistanceTest {
 		
 		@Override
 		protected boolean toStringIncludesSimpleClassName() {
@@ -263,7 +259,7 @@ public class StringDistancesTest {
 		}
 	}
 	
-	public static final class ForListWithSimplifierTest extends StringDistanceTest {
+	static final class ForListWithSimplifierTest extends StringDistanceTest {
 		
 		@Override
 		protected boolean toStringIncludesSimpleClassName() {
@@ -291,7 +287,7 @@ public class StringDistancesTest {
 		}
 	}
 	
-	public static final class ForSetTest extends StringDistanceTest {
+	static final class ForSetTest extends StringDistanceTest {
 		
 		@Override
 		protected boolean toStringIncludesSimpleClassName() {
@@ -314,7 +310,7 @@ public class StringDistancesTest {
 		}
 	}
 	
-	public static final class ForSetWithSimplifierTest extends StringDistanceTest {
+	static final class ForSetWithSimplifierTest extends StringDistanceTest {
 		
 		@Override
 		protected boolean satisfiesCoincidence() {
@@ -342,7 +338,7 @@ public class StringDistancesTest {
 		}
 	}
 	
-	public static final class ForMultisetTest extends StringDistanceTest {
+	static final class ForMultisetTest extends StringDistanceTest {
 		
 		@Override
 		protected boolean toStringIncludesSimpleClassName() {
@@ -365,7 +361,7 @@ public class StringDistancesTest {
 		}
 	}
 	
-	public static final class ForMultisetWithSimplifierTest extends StringDistanceTest {
+	static final class ForMultisetWithSimplifierTest extends StringDistanceTest {
 		
 		@Override
 		protected boolean satisfiesCoincidence() {
@@ -393,7 +389,7 @@ public class StringDistancesTest {
 		}
 	}
 	
-	public static final class ForStringTest extends StringDistanceTest {
+	static final class ForStringTest extends StringDistanceTest {
 		
 		@Override
 		protected boolean toStringIncludesSimpleClassName() {
@@ -416,7 +412,7 @@ public class StringDistancesTest {
 		}
 	}
 	
-	public static final class ForStringWithSimplifierTest extends StringDistanceTest {
+	static final class ForStringWithSimplifierTest extends StringDistanceTest {
 		
 		@Override
 		protected boolean satisfiesCoincidence() {

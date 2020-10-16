@@ -29,7 +29,7 @@ import java.util.function.Predicate;
 import static java.util.Arrays.asList;
 import static org.simmetrics.tokenizers.Tokenizers.whitespace;
 
-public class TransformFilterTest extends TokenizerTest {
+final class TransformFilterTest extends TokenizerTest {
 
 	private static Predicate<String> theAndOr = s -> !asList("THE", "AND", "OR").contains(s);
 	private static Predicate<String> dog = s -> !"dog".equals(s);

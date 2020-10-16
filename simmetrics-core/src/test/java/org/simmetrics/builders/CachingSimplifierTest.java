@@ -20,6 +20,7 @@
 
 package org.simmetrics.builders;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -31,14 +32,14 @@ import static org.simmetrics.simplifiers.Simplifiers.toLowerCase;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.simplifiers.Simplifier;
 import org.simmetrics.simplifiers.SimplifierTest;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
-public abstract class CachingSimplifierTest extends SimplifierTest {
+abstract class CachingSimplifierTest extends SimplifierTest {
 
 	private Simplifier innerSimplifier;
 
@@ -81,7 +82,7 @@ public abstract class CachingSimplifierTest extends SimplifierTest {
 	}
 
 	@Test
-	public final void simplifyShouldUseCache() {
+	final void simplifyShouldUseCache() {
 		for (T t : tests) {
 			simplifier.simplify(t.string());
 		}
@@ -90,10 +91,11 @@ public abstract class CachingSimplifierTest extends SimplifierTest {
 		verify(innerSimplifier, times(2)).simplify("CCC");
 	}
 	
-	@Test(expected=IllegalStateException.class) 
-	public void shouldThrowIllegalStateException() throws ExecutionException{
+	@Test
+	void shouldThrowIllegalStateException() throws ExecutionException{
 		Cache<String, String> cache = mock(Cache.class);
 		when(cache.get(anyString(), any(Callable.class))).thenThrow(new ExecutionException(new Exception()));
-		getCachingSimplifier(cache, toLowerCase()).simplify("Sheep");
+		Simplifier cachingSimplifier = getCachingSimplifier(cache, toLowerCase());
+		assertThrows(IllegalStateException.class, () -> cachingSimplifier.simplify("Sheep"));
 	}
 }

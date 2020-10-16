@@ -23,7 +23,7 @@ package org.simmetrics.metrics;
 import org.simmetrics.StringMetric;
 import org.simmetrics.StringMetricTest;
 
-public final class SmithWatermanGotohTest extends StringMetricTest {
+final class SmithWatermanGotohTest extends StringMetricTest {
 	
 	@Override
 	protected boolean satisfiesSubadditivity() {

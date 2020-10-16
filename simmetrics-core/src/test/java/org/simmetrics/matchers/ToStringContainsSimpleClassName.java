@@ -23,7 +23,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 
-public class ToStringContainsSimpleClassName<T> extends TypeSafeDiagnosingMatcher<T>{
+public final class ToStringContainsSimpleClassName<T> extends TypeSafeDiagnosingMatcher<T>{
 
 	@Override
 	public void describeTo(Description arg0) {

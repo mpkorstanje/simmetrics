@@ -19,9 +19,9 @@
  */
 package org.simmetrics.builders;
 
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.Metric;
 import org.simmetrics.StringMetricTest;
 import org.simmetrics.metrics.Identity;
@@ -29,7 +29,7 @@ import org.simmetrics.builders.StringMetrics.ForStringWithSimplifier;
 import org.simmetrics.simplifiers.Simplifier;
 import org.simmetrics.simplifiers.Simplifiers;
 
-public class ForStringWithSimplifierTest extends StringMetricTest{
+class ForStringWithSimplifierTest extends StringMetricTest{
 
 	private final Metric<String> metric = new Identity<>();
 	private final Simplifier simplifier = Simplifiers.toLowerCase();
@@ -58,12 +58,12 @@ public class ForStringWithSimplifierTest extends StringMetricTest{
 	}
 	
 	@Test
-	public void shouldReturnMetric(){
+	void shouldReturnMetric(){
 		assertSame(metric, getMetric().getMetric());
 	}
 	
 	@Test
-	public void shouldReturnSimplifier(){
+	void shouldReturnSimplifier(){
 		assertSame(simplifier, getMetric().getSimplifier());
 	}
 }

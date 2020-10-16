@@ -20,21 +20,17 @@
 
 package org.simmetrics.metrics;
 
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
 import org.simmetrics.Metric;
 import org.simmetrics.StringDistance;
 import org.simmetrics.StringDistanceTest;
 import org.simmetrics.StringMetric;
 import org.simmetrics.StringMetricTest;
 
-@RunWith(Enclosed.class)
-public final class LevenshteinTest {
+final class LevenshteinTest {
 
-	@RunWith(Enclosed.class)
-	public static final class DistanceString {
+	static final class DistanceString {
 
-		public static final class UnitCost extends StringDistanceTest {
+		static final class UnitCost extends StringDistanceTest {
 
 			@Override
 			protected StringDistance getMetric() {
@@ -106,10 +102,9 @@ public final class LevenshteinTest {
 
 	}
 
-	@RunWith(Enclosed.class)
-	public static final class MetricString {
+	static final class MetricString {
 
-		public static final class UnitCost extends StringMetricTest {
+		static final class UnitCost extends StringMetricTest {
 
 			@Override
 			protected StringMetric getMetric() {
@@ -183,7 +178,7 @@ public final class LevenshteinTest {
 			}
 		}
 
-		public static final class InsertDeleteCost extends StringMetricTest {
+		static final class InsertDeleteCost extends StringMetricTest {
 
 			@Override
 			protected Metric<String> getMetric() {
@@ -211,7 +206,7 @@ public final class LevenshteinTest {
 			}
 		}
 
-		public static final class NoSubstituteCost extends StringMetricTest {
+		static final class NoSubstituteCost extends StringMetricTest {
 
 			@Override
 			protected Metric<String> getMetric() {
@@ -248,7 +243,7 @@ public final class LevenshteinTest {
 			}
 		}
 
-		public static final class LowSubstituteCost extends StringMetricTest {
+		static final class LowSubstituteCost extends StringMetricTest {
 
 			@Override
 			protected Metric<String> getMetric() {

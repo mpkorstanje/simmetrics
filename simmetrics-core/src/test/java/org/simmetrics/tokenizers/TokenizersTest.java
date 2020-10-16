@@ -19,7 +19,7 @@
  */
 package org.simmetrics.tokenizers;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.tokenizers.Tokenizers.Filter;
 import org.simmetrics.tokenizers.Tokenizers.Filter.TransformFilter;
 import org.simmetrics.tokenizers.Tokenizers.QGram;
@@ -37,16 +37,15 @@ import java.util.regex.Pattern;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.simmetrics.PredicateMatcher.accepts;
 import static org.simmetrics.PredicateMatcher.rejects;
 import static org.simmetrics.tokenizers.Tokenizers.chain;
 
-@SuppressWarnings({"javadoc"})
-public class TokenizersTest {
+final class TokenizersTest {
 
 	private final String regex = "\\s+";
 	private final Pattern pattern = Pattern.compile(regex);
@@ -58,7 +57,7 @@ public class TokenizersTest {
 	private final Predicate<String> occasionallyPassing = s -> asList("occasionally", "passing").contains(s);
 
 	@Test
-	public void shouldReturnSplitForPattern() {
+	void shouldReturnSplitForPattern() {
 		Tokenizer tokenizer = Tokenizers.pattern(pattern);
 
 		assertEquals(Split.class, tokenizer.getClass());
@@ -68,7 +67,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnSplitForRegex() {
+	void shouldReturnSplitForRegex() {
 		Tokenizer tokenizer = Tokenizers.pattern(regex);
 
 		assertEquals(Split.class, tokenizer.getClass());
@@ -78,7 +77,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnQGram() {
+	void shouldReturnQGram() {
 		Tokenizer tokenizer = Tokenizers.qGram(3);
 
 		assertEquals(QGram.class, tokenizer.getClass());
@@ -88,7 +87,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnQGramWithFilter() {
+	void shouldReturnQGramWithFilter() {
 		Tokenizer tokenizer = Tokenizers.qGramWithFilter(3);
 
 		assertEquals(QGram.class, tokenizer.getClass());
@@ -99,7 +98,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnQGramWithPadding() {
+	void shouldReturnQGramWithPadding() {
 		Tokenizer tokenizer = Tokenizers.qGramWithPadding(3);
 
 		assertEquals(QGramExtended.class, tokenizer.getClass());
@@ -111,7 +110,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnQGramWithCustomPadding() {
+	void shouldReturnQGramWithCustomPadding() {
 		Tokenizer tokenizer = Tokenizers.qGramWithPadding(3, "@");
 
 		assertEquals(QGramExtended.class, tokenizer.getClass());
@@ -123,7 +122,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnQGramWithCustomStartAndEndPadding() {
+	void shouldReturnQGramWithCustomStartAndEndPadding() {
 		Tokenizer tokenizer = Tokenizers.qGramWithPadding(3, "^", "$");
 
 		assertEquals(QGramExtended.class, tokenizer.getClass());
@@ -135,13 +134,13 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnWhitespace() {
+	void shouldReturnWhitespace() {
 		assertEquals(Whitespace.class,
 				Tokenizers.whitespace().getClass());
 	}
 
 	@Test
-	public void shouldReturnTransform() {
+	void shouldReturnTransform() {
 		Tokenizer tokenizer = Tokenizers.transform(whitespace, identity);
 
 		assertEquals(Transform.class, tokenizer.getClass());
@@ -152,7 +151,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnTransformForTransform() {
+	void shouldReturnTransformForTransform() {
 		Transform t = new Transform(whitespace, identity);
 		Tokenizer tokenizer = Tokenizers.transform(t, identity2);
 
@@ -164,7 +163,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnTransformForFilter() {
+	void shouldReturnTransformForFilter() {
 		Tokenizers.Filter filter = new Tokenizers.Filter(whitespace, occasionallyPassing);
 		Tokenizer tokenizer = Tokenizers.transform(filter, identity);
 
@@ -176,20 +175,20 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldChainSingletonList() {
+	void shouldChainSingletonList() {
 		List<Tokenizer> tokenizers = singletonList(whitespace);
 		Tokenizer tokenizer = chain(tokenizers);
 		assertSame(whitespace, tokenizer);
 	}
 
 	@Test
-	public void shouldChainPlusOne() {
+	void shouldChainPlusOne() {
 		Tokenizer tokenizer = chain(whitespace);
 		assertSame(whitespace, tokenizer);
 	}
 
 	@Test
-	public void shouldChainList() {
+	void shouldChainList() {
 		List<Tokenizer> tokenizers = asList(whitespace, whitespace, whitespace);
 		Tokenizer tokenizer = chain(tokenizers);
 
@@ -199,7 +198,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldChainArrayPlusOne() {
+	void shouldChainArrayPlusOne() {
 		Tokenizer tokenizer = chain(whitespace, whitespace, whitespace);
 
 		assertEquals(Recursive.class, tokenizer.getClass());
@@ -208,7 +207,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldChainRecursiveList() {
+	void shouldChainRecursiveList() {
 		List<Tokenizer> tokenizers = asList(whitespace,
 				chain(whitespace, whitespace), whitespace);
 		Tokenizer tokenizer = chain(tokenizers);
@@ -220,7 +219,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldChainRecursiveArrayPlusOne() {
+	void shouldChainRecursiveArrayPlusOne() {
 		Tokenizer tokenizer = chain(whitespace,
 				chain(whitespace, whitespace), whitespace);
 
@@ -231,7 +230,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnFilter() {
+	void shouldReturnFilter() {
 		Tokenizer tokenizer = Tokenizers.filter(whitespace, occasionallyPassing);
 
 		assertEquals(Filter.class, tokenizer.getClass());
@@ -242,7 +241,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnFilterForFilter() {
+	void shouldReturnFilterForFilter() {
 		Filter t = new Filter(whitespace, occasionallyPassing);
 		Tokenizer tokenizer = Tokenizers.filter(t, sometimesPassing);
 
@@ -256,7 +255,7 @@ public class TokenizersTest {
 	}
 
 	@Test
-	public void shouldReturnFilterForTransform() {
+	void shouldReturnFilterForTransform() {
 		Transform t = new Transform(whitespace, identity);
 		Tokenizer tokenizer = Tokenizers.filter(t, sometimesPassing);
 

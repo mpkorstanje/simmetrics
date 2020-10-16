@@ -24,7 +24,7 @@ import org.simmetrics.ListMetric;
 import org.simmetrics.ListMetricTest;
 import org.simmetrics.StringMetric;
 
-public final class Level2Test extends ListMetricTest {
+final class Level2Test extends ListMetricTest {
 
 	@Override
 	protected boolean supportsNullValues() {

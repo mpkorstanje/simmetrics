@@ -23,7 +23,7 @@ package org.simmetrics.metrics.costfunctions;
 import org.simmetrics.metrics.functions.Gap;
 import org.simmetrics.metrics.functions.LinearGap;
 
-public final class LinearGapTest extends GapCostTest {
+final class LinearGapTest extends GapCostTest {
 	@Override
 	protected Gap getCost() {
 		return new LinearGap(-0.42f);

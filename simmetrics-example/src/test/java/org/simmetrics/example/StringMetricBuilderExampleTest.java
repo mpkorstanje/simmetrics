@@ -18,53 +18,53 @@
  * #L%
  */
 package org.simmetrics.example;
-import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-import org.simmetrics.example.StringMetricBuilderExample;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StringMetricBuilderExampleTest {
+final class StringMetricBuilderExampleTest {
 	
 	private static final float DELTA = 0.0001f;
 	
 	@Test
-	public void example00(){
+	void example00(){
 		assertEquals(0.7812f, StringMetricBuilderExample.example00(), DELTA);
 	}
 	
 	@Test
-	public void example01(){
+	void example01(){
 		assertEquals(1.0000f, StringMetricBuilderExample.example01(), DELTA);
 	}
 	
 	@Test
-	public void example02(){
+	void example02(){
 		assertEquals(1.0000f, StringMetricBuilderExample.example02(), DELTA);
 	}
 	
 	@Test
-	public void example03(){
+	void example03(){
 		assertEquals(0.7777f, StringMetricBuilderExample.example03(), DELTA);
 	}
 	
 	@Test
-	public void example04(){
+	void example04(){
 		assertEquals(0.8292f, StringMetricBuilderExample.example04(), DELTA);
 	}
 	
 	@Test
-	public void example05(){
+	void example05(){
 		assertEquals(0.6902f, StringMetricBuilderExample.example05(), DELTA);
 	}
 	
 	@Test
-	public void example06(){
+	void example06(){
 		assertEquals(0.6902f, StringMetricBuilderExample.example06(), DELTA);
 	}
 	
 	@Test
-	public void example07(){
+	void example07(){
 		assertEquals(0.6902f, StringMetricBuilderExample.example07(), DELTA);
 	}
 }

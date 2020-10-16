@@ -19,7 +19,7 @@
  */
 package org.simmetrics.simplifiers;
 
-public class DaitchMokotoffSoundexTest extends SimplifierTest {
+class DaitchMokotoffSoundexTest extends SimplifierTest {
 
 	@Override
 	protected Simplifier getSimplifier() {

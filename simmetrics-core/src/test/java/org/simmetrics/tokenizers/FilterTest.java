@@ -19,22 +19,22 @@
  */
 package org.simmetrics.tokenizers;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.tokenizers.Tokenizers.Filter.TransformFilter;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.simmetrics.PredicateMatcher.accepts;
 import static org.simmetrics.PredicateMatcher.rejects;
 import static org.simmetrics.tokenizers.Tokenizers.Filter;
 import static org.simmetrics.tokenizers.Tokenizers.Transform;
 
-public class FilterTest extends TokenizerTest {
+class FilterTest extends TokenizerTest {
 
 	private final Tokenizer whitespace = Tokenizers.whitespace();
 	private final Function<String, String> identity = Function.identity();
@@ -59,7 +59,7 @@ public class FilterTest extends TokenizerTest {
 	}
 
 	@Test
-	public void shouldCreateCombinedForFilter() {
+	void shouldCreateCombinedForFilter() {
 		Filter f = new Filter(whitespace, sometimesPassing);
 		Tokenizer tokenizer = Filter.createCombined(f, occasionallyPassing);
 
@@ -73,7 +73,7 @@ public class FilterTest extends TokenizerTest {
 	}
 
 	@Test
-	public void shouldCreateCombinedForTransformFilter() {
+	void shouldCreateCombinedForTransformFilter() {
 		Transform transform = new Transform(whitespace, identity);
 		TransformFilter t = new TransformFilter(transform, sometimesPassing);
 		Tokenizer tokenizer = Filter.createCombined(t, occasionallyPassing);
@@ -88,7 +88,7 @@ public class FilterTest extends TokenizerTest {
 	}
 
 	@Test
-	public void shouldCreateCombinedForTransform() {
+	void shouldCreateCombinedForTransform() {
 		Transform transform = new Transform(whitespace, identity);
 		Tokenizer tokenizer = Filter.createCombined(transform, sometimesPassing);
 

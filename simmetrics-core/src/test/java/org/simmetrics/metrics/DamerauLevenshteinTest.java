@@ -20,45 +20,42 @@
 
 package org.simmetrics.metrics;
 
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.Metric;
 import org.simmetrics.StringDistance;
 import org.simmetrics.StringDistanceTest;
 import org.simmetrics.StringMetric;
 import org.simmetrics.StringMetricTest;
 
-@SuppressWarnings({ "javadoc", "static-method" })
-@RunWith(Enclosed.class)
-public class DamerauLevenshteinTest {
-	public static final class OutofBounds {
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-		@Test(expected = IllegalArgumentException.class)
-		public void shouldThrowForDeleteCostOnBound() {
-			new DamerauLevenshtein(0, 1, 1);
+class DamerauLevenshteinTest {
+	static final class OutofBounds {
+
+		@Test
+		void shouldThrowForDeleteCostOnBound() {
+			assertThrows(IllegalArgumentException.class, () -> new DamerauLevenshtein(0, 1, 1));
 		}
 
-		@Test(expected = IllegalArgumentException.class)
-		public void shouldThrowForDeleteCostBelowBound() {
-			new DamerauLevenshtein(-1f, 1, 1);
+		@Test
+		void shouldThrowForDeleteCostBelowBound() {
+			assertThrows(IllegalArgumentException.class, () -> new DamerauLevenshtein(-1f, 1, 1));
 		}
 
-		@Test(expected = IllegalArgumentException.class)
-		public void shouldThrowForsubstituteCostBelowBound() {
-			new DamerauLevenshtein(1, -Float.MIN_VALUE, 1);
+		@Test
+		void shouldThrowForSubstituteCostBelowBound() {
+			assertThrows(IllegalArgumentException.class, () -> new DamerauLevenshtein(1, -Float.MIN_VALUE, 1));
 		}
 
-		@Test(expected = IllegalArgumentException.class)
-		public void shouldThrowForTransposeCostBelowBound() {
-			new DamerauLevenshtein(1, 1, -Float.MIN_VALUE);
+		@Test
+		void shouldThrowForTransposeCostBelowBound() {
+			assertThrows(IllegalArgumentException.class, () -> new DamerauLevenshtein(1, 1, -Float.MIN_VALUE));
 		}
 	}
 
-	@RunWith(Enclosed.class)
-	public static final class DistanceString {
+	static final class DistanceString {
 
-		public static final class UnitCost extends StringDistanceTest {
+		static final class UnitCost extends StringDistanceTest {
 
 			@Override
 			protected StringDistance getMetric() {
@@ -137,10 +134,9 @@ public class DamerauLevenshteinTest {
 		}
 	}
 
-	@RunWith(Enclosed.class)
-	public static final class MetricStringTest {
+	static final class MetricStringTest {
 
-		public static final class UnitCost extends StringMetricTest {
+		static final class UnitCost extends StringMetricTest {
 
 			@Override
 			protected StringMetric getMetric() {
@@ -224,7 +220,7 @@ public class DamerauLevenshteinTest {
 
 		}
 
-		public static final class InsertDeleteCost extends StringMetricTest {
+		static final class InsertDeleteCost extends StringMetricTest {
 
 			@Override
 			protected Metric<String> getMetric() {
@@ -252,7 +248,7 @@ public class DamerauLevenshteinTest {
 			}
 		}
 
-		public static final class NoSubstituteCost extends StringMetricTest {
+		static final class NoSubstituteCost extends StringMetricTest {
 			@Override
 			protected Metric<String> getMetric() {
 				return new DamerauLevenshtein(1.0f, 0.0f, 1.0f);
@@ -280,7 +276,7 @@ public class DamerauLevenshteinTest {
 
 		}
 
-		public static final class LowSubstituteCost extends StringMetricTest {
+		static final class LowSubstituteCost extends StringMetricTest {
 
 			@Override
 			protected Metric<String> getMetric() {
@@ -312,7 +308,7 @@ public class DamerauLevenshteinTest {
 			}
 		}
 
-		public static final class NoTransposeCost extends StringMetricTest {
+		static final class NoTransposeCost extends StringMetricTest {
 
 			@Override
 			protected Metric<String> getMetric() {
@@ -340,7 +336,7 @@ public class DamerauLevenshteinTest {
 
 		}
 
-		public static final class LowTransposeCost extends StringMetricTest {
+		static final class LowTransposeCost extends StringMetricTest {
 
 			@Override
 			protected Metric<String> getMetric() {

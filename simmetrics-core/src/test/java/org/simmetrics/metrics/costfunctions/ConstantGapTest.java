@@ -23,7 +23,7 @@ package org.simmetrics.metrics.costfunctions;
 import org.simmetrics.metrics.functions.ConstantGap;
 import org.simmetrics.metrics.functions.Gap;
 
-public final class ConstantGapTest extends GapCostTest {
+final class ConstantGapTest extends GapCostTest {
 	@Override
 	protected Gap getCost() {
 		return new ConstantGap(-42f);

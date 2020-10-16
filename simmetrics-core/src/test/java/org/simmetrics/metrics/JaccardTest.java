@@ -24,17 +24,14 @@ import static java.util.Arrays.asList;
 
 import java.util.Set;
 
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
 import org.simmetrics.Distance;
 import org.simmetrics.SetDistanceTest;
 import org.simmetrics.SetMetric;
 import org.simmetrics.SetMetricTest;
 
-@RunWith(Enclosed.class)
-public final class JaccardTest  {
+final class JaccardTest  {
 	
-public static final class DistanceTest extends SetDistanceTest {
+static final class DistanceTest extends SetDistanceTest {
 		
 		
 		@Override
@@ -61,7 +58,7 @@ public static final class DistanceTest extends SetDistanceTest {
 		}
 	}
 
-	public static final class MetricTest extends SetMetricTest {
+	static final class MetricTest extends SetMetricTest {
 		
 		
 		@Override

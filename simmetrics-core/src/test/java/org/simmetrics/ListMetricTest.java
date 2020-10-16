@@ -20,12 +20,10 @@
 
 package org.simmetrics;
 
-import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.simmetrics.tokenizers.Tokenizers.whitespace;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.simmetrics.tokenizers.Tokenizer;

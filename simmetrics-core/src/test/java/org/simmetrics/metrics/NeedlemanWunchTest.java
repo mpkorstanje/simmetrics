@@ -20,16 +20,13 @@
 
 package org.simmetrics.metrics;
 
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
 import org.simmetrics.StringMetric;
 import org.simmetrics.StringMetricTest;
 import org.simmetrics.metrics.functions.MatchMismatch;
 
-@RunWith(Enclosed.class)
-public class NeedlemanWunchTest {
+class NeedlemanWunchTest {
 
-	public static final class Default extends StringMetricTest {
+	static final class Default extends StringMetricTest {
 
 		@Override
 		protected StringMetric getMetric() {
@@ -98,7 +95,7 @@ public class NeedlemanWunchTest {
 		}
 	}
 
-	public static final class NoGapValue extends StringMetricTest {
+	static final class NoGapValue extends StringMetricTest {
 
 		@Override
 		protected StringMetric getMetric() {
@@ -139,7 +136,7 @@ public class NeedlemanWunchTest {
 		}
 	}
 
-	public static final class LowGapValue extends StringMetricTest {
+	static final class LowGapValue extends StringMetricTest {
 
 		@Override
 		protected StringMetric getMetric() {

@@ -20,17 +20,14 @@
 
 package org.simmetrics.metrics;
 
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
 import org.simmetrics.StringDistance;
 import org.simmetrics.StringDistanceTest;
 import org.simmetrics.StringMetric;
 import org.simmetrics.StringMetricTest;
 
-@RunWith(Enclosed.class)
-public final class LongestCommonSubstringTest   {
+final class LongestCommonSubstringTest   {
 	
-	public static final class DistanceTest extends StringDistanceTest {
+	static final class DistanceTest extends StringDistanceTest {
 		@Override
 		protected StringDistance getMetric() {
 			return new LongestCommonSubstring();
@@ -84,7 +81,7 @@ public final class LongestCommonSubstringTest   {
 
 	
 	
-	public static final class MetricTest extends StringMetricTest {
+	static final class MetricTest extends StringMetricTest {
 		@Override
 		protected StringMetric getMetric() {
 			return new LongestCommonSubstring();

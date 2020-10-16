@@ -19,7 +19,7 @@
  */
 package org.simmetrics.simplifiers;
 
-public class MatchRatingApproachTest extends SimplifierTest {
+class MatchRatingApproachTest extends SimplifierTest {
 
 	@Override
 	protected Simplifier getSimplifier() {

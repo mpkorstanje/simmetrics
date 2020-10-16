@@ -25,7 +25,7 @@ import static java.util.Arrays.asList;
 import org.simmetrics.MultisetMetric;
 import org.simmetrics.MultisetMetricTest;
 
-public final class GeneralizedOverlapCoefficientTest extends MultisetMetricTest {
+final class GeneralizedOverlapCoefficientTest extends MultisetMetricTest {
 
 	@Override
 	protected boolean satisfiesCoincidence() {

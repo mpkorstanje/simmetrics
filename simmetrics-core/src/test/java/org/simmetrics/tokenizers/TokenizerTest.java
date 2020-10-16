@@ -21,10 +21,11 @@
 package org.simmetrics.tokenizers;
 
 import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.simmetrics.matchers.ImplementsToString.implementsToString;
 
 import java.util.Collection;
@@ -32,23 +33,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.junit.MockitoRule;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 public abstract class TokenizerTest {
-
-	@Rule
-	public final MockitoRule mockitoRule = MockitoJUnit.rule();
-	
-	@Rule
-	public final ExpectedException thrown = ExpectedException.none();
 
 	protected static class T {
 		private final String string;
@@ -79,8 +73,8 @@ public abstract class TokenizerTest {
 
 	private static void testTokens(String string, Collection<String> expected,
 			Collection<String> actual) {
-		assertEquals(string + " did not tokenize correctly", expected, actual);
-		assertFalse(actual + " contained null", actual.contains(null));
+		assertEquals(expected, actual, string + " did not tokenize correctly");
+		assertFalse(actual.contains(null), actual + " contained null");
 	}
 
 	protected T[] tests;
@@ -102,14 +96,14 @@ public abstract class TokenizerTest {
 
 	protected abstract Tokenizer getTokenizer();
 
-	@Before
-	public final void setUp() throws Exception {
+	@BeforeEach
+	final void setUp() throws Exception {
 		tokenizer = getTokenizer();
 		tests = getTests();
 	}
 
 	@Test
-	public final void containsEmptyTest() {
+	final void containsEmptyTest() {
 		for (T t : tests) {
 			if (t.string().isEmpty()) {
 				return;
@@ -120,76 +114,71 @@ public abstract class TokenizerTest {
 	}
 
 	@Test
-	public final void shouldImplementToString() {
+	final void shouldImplementToString() {
 		assertThat(tokenizer, implementsToString());
 	}
 
 	@Test
-	public final void shouldTokenizeToList() {
+	final void shouldTokenizeToList() {
 		if (!supportsTokenizeToList()) {
-			thrown.expect(UnsupportedOperationException.class);
-		}
-
-		for (T t : tests) {
-			testTokens(t.string(), t.tokensAsList(),
-					tokenizer.tokenizeToList(t.string()));
+			assertThrows(UnsupportedOperationException.class, () -> tokenizer.tokenizeToList(""));
+		} else {
+			for (T t : tests) {
+				testTokens(t.string(), t.tokensAsList(),
+						tokenizer.tokenizeToList(t.string()));
+			}
 		}
 	}
-	
+
 	@Test
-	public final void tokenizeToListShouldThrowNullPointerException() {
+	final void tokenizeToListShouldThrowNullPointerException() {
 		if (supportsTokenizeToList()) {
-			thrown.expect(NullPointerException.class);
+			assertThrows(NullPointerException.class, () -> tokenizer.tokenizeToList(null));
 		} else {
-			thrown.expect(UnsupportedOperationException.class);
+			assertThrows(UnsupportedOperationException.class, () -> tokenizer.tokenizeToList(null));
 		}
-
-		tokenizer.tokenizeToList(null);
 	}
 
 	@Test
-	public final void shouldTokenizeToSet() {
+	final void shouldTokenizeToSet() {
 		if (!supportsTokenizeToSet()) {
-			thrown.expect(UnsupportedOperationException.class);
-		}
-
-		for (T t : tests) {
-			testTokens(t.string(), t.tokensAsSet(),
-					tokenizer.tokenizeToSet(t.string()));
+			assertThrows(UnsupportedOperationException.class, () -> tokenizer.tokenizeToSet(""));
+		} else {
+			for (T t : tests) {
+				testTokens(t.string(), t.tokensAsSet(), tokenizer.tokenizeToSet(t.string()));
+			}
 		}
 	}
 
 	@Test
-	public final void tokenizeToSetShouldThrowNullPointerException() {
+	final void tokenizeToSetShouldThrowNullPointerException() {
 		if (supportsTokenizeToSet()) {
-			thrown.expect(NullPointerException.class);
+			assertThrows(NullPointerException.class, () -> tokenizer.tokenizeToSet(null));
 		} else {
-			thrown.expect(UnsupportedOperationException.class);
+			assertThrows(UnsupportedOperationException.class, () -> tokenizer.tokenizeToSet(null));
 		}
-		tokenizer.tokenizeToSet(null);
 	}
-	
-	
-	@Test
-	public final void shouldTokenizeToMutiset() {
-		if (!supportsTokenizeToMultiset()) {
-			thrown.expect(UnsupportedOperationException.class);
-		}
 
-		for (T t : tests) {
-			testTokens(t.string(), t.tokensAsMultiset(),
-					tokenizer.tokenizeToMultiset(t.string()));
-		}
-	}
-	
+
 	@Test
-	public final void tokenizeToMultisetShouldThrowNullPointerException() {
-		if (supportsTokenizeToMultiset()) {
-			thrown.expect(NullPointerException.class);
+	final void shouldTokenizeToMutiset() {
+		if (!supportsTokenizeToMultiset()) {
+			assertThrows(UnsupportedOperationException.class, () -> tokenizer.tokenizeToMultiset(""));
 		} else {
-			thrown.expect(UnsupportedOperationException.class);
+			for (T t : tests) {
+				testTokens(t.string(), t.tokensAsMultiset(),
+						tokenizer.tokenizeToMultiset(t.string()));
+			}
 		}
-		tokenizer.tokenizeToMultiset(null);
 	}
-	
+
+	@Test
+	final void tokenizeToMultisetShouldThrowNullPointerException() {
+		if (supportsTokenizeToMultiset()) {
+			assertThrows(NullPointerException.class, () -> tokenizer.tokenizeToMultiset(null));
+		} else {
+			assertThrows(UnsupportedOperationException.class, () -> tokenizer.tokenizeToMultiset(null));
+		}
+	}
+
 }

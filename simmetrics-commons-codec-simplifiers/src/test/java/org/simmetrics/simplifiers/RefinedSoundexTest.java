@@ -19,7 +19,7 @@
  */
 package org.simmetrics.simplifiers;
 
-public class RefinedSoundexTest extends SimplifierTest {
+class RefinedSoundexTest extends SimplifierTest {
 
 	@Override
 	protected Simplifier getSimplifier() {

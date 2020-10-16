@@ -19,18 +19,18 @@
  */
 package org.simmetrics.tokenizers;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.simmetrics.tokenizers.Tokenizers.Transform.FilterTransform;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.simmetrics.tokenizers.Tokenizers.Filter;
 import static org.simmetrics.tokenizers.Tokenizers.Transform;
 
-public class TransformTest extends TokenizerTest {
+final class TransformTest extends TokenizerTest {
 
 	private final Tokenizer whitespace = Tokenizers.whitespace();
 	private final Function<String, String> makeA = s -> "A";
@@ -56,7 +56,7 @@ public class TransformTest extends TokenizerTest {
 	}
 
 	@Test
-	public void shouldCreateCombinedForFilter() {
+	void shouldCreateCombinedForFilter() {
 		Filter filter = new Filter(whitespace, alwaysTrue);
 		Tokenizer tokenizer = Transform.createCombined(filter, makeA);
 
@@ -70,7 +70,7 @@ public class TransformTest extends TokenizerTest {
 	}
 
 	@Test
-	public void shouldCreateCombinedForFilterTransform() {
+	void shouldCreateCombinedForFilterTransform() {
 		Filter filter = new Filter(whitespace, alwaysTrue);
 		FilterTransform t = new FilterTransform(filter, makeA);
 		Tokenizer tokenizer = Transform.createCombined(t, replaceAWithB);
@@ -84,7 +84,7 @@ public class TransformTest extends TokenizerTest {
 	}
 
 	@Test
-	public void shouldCreateCombinedForTransform() {
+	void shouldCreateCombinedForTransform() {
 		Transform t = new Transform(whitespace, makeA);
 		Tokenizer tokenizer = Transform.createCombined(t, replaceAWithB);
 

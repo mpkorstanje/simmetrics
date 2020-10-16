@@ -26,8 +26,6 @@ import static org.simmetrics.tokenizers.Tokenizers.filter;
 import static org.simmetrics.tokenizers.Tokenizers.qGram;
 import static org.simmetrics.tokenizers.Tokenizers.whitespace;
 
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
 import org.simmetrics.Distance;
 import org.simmetrics.MultisetDistanceTest;
 import org.simmetrics.MultisetMetric;
@@ -38,12 +36,11 @@ import com.google.common.collect.Multiset;
 
 import java.util.function.Predicate;
 
-@RunWith(Enclosed.class)
-public final class SimonWhiteTest  {
+final class SimonWhiteTest  {
 	
 	private static final Predicate<String> minimumLength = s -> s.length() >= 2;
 
-	public static final class DistaneTest extends MultisetDistanceTest {
+	static final class DistaneTest extends MultisetDistanceTest {
 		
 		@Override
 		protected Distance<Multiset<String>> getMetric() {
@@ -68,7 +65,7 @@ public final class SimonWhiteTest  {
 	}
 
 	
-	public static final class MetricTest extends MultisetMetricTest {
+	static final class MetricTest extends MultisetMetricTest {
 	
 		@Override
 		protected MultisetMetric<String> getMetric() {

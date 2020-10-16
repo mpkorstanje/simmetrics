@@ -22,7 +22,7 @@ package org.simmetrics.tokenizers;
 import static java.util.regex.Pattern.compile;
 import static org.simmetrics.tokenizers.Tokenizers.Split;
 
-public class SplitTest extends TokenizerTest {
+final class SplitTest extends TokenizerTest {
 
 	@Override
 	protected Tokenizer getTokenizer() {

@@ -19,7 +19,7 @@
  */
 package org.simmetrics.simplifiers;
 
-public class NysiisTest extends SimplifierTest {
+class NysiisTest extends SimplifierTest {
 
 	@Override
 	protected Simplifier getSimplifier() {
