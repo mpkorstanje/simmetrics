@@ -28,7 +28,7 @@ import java.util.function.Predicate;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.simmetrics.PredicateMatcher.accepts;
 import static org.simmetrics.PredicateMatcher.rejects;
 import static org.simmetrics.tokenizers.Tokenizers.Filter;

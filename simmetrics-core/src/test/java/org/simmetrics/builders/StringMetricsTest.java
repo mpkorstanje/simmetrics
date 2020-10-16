@@ -46,7 +46,7 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.simmetrics.simplifiers.Simplifiers.toLowerCase;
 import static org.simmetrics.simplifiers.SimplifiersMatcher.chain;
 import static org.simmetrics.tokenizers.Tokenizers.whitespace;
