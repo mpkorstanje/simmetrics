@@ -1,6 +1,6 @@
 /*-
  * #%L
- * Simmetrics Apache Commons Codec Simplifiers
+ * Simmetrics - Apache Commons Codec Simplifiers
  * %%
  * Copyright (C) 2014 - 2021 Simmetrics Authors
  * %%

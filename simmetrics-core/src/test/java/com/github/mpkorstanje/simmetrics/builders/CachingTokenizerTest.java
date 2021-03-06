@@ -1,6 +1,6 @@
 /*-
  * #%L
- * Simmetrics Core
+ * Simmetrics - Core
  * %%
  * Copyright (C) 2014 - 2021 Simmetrics Authors
  * %%
@@ -28,7 +28,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import com.github.mpkorstanje.simmetrics.tokenizers.Tokenizer;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 
 import static com.google.common.collect.Lists.newArrayList;
@@ -64,7 +63,7 @@ abstract class CachingTokenizerTest<V> extends TokenizerTest {
     public void before() throws Exception {
 
         lenient()
-                .when(brokenCache.get(anyString(), any(Callable.class)))
+                .when(brokenCache.get(anyString(), any()))
                 .thenThrow(new ExecutionException(new Exception()));
         lenient()
                 .when(innerTokenizer.tokenizeToList("ABC"))

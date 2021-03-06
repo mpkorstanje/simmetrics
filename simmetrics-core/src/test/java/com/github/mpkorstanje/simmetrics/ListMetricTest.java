@@ -1,6 +1,6 @@
 /*-
  * #%L
- * Simmetrics Core
+ * Simmetrics - Core
  * %%
  * Copyright (C) 2014 - 2021 Simmetrics Authors
  * %%
