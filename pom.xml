@@ -13,7 +13,7 @@
 		similarity metrics return normalized values rather than unbounded similarity scores. Distance metrics return
 		non-negative unbounded scores.
 	</description>
-	<url>https://mpkorstanje.github.io/simmetrics/</url>
+	<url>https://github.com/mpkorstanje/simmetrics</url>
 
 	<modules>
 		<module>simmetrics-core</module>
@@ -205,22 +205,6 @@
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>3.1.1</version>
 				</plugin>
-				<plugin>
-					<groupId>com.github.github</groupId>
-					<artifactId>site-maven-plugin</artifactId>
-					<version>0.12</version>
-					<configuration>
-						<message>Creating site for ${project.name}:${project.version}</message>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>site</goal>
-							</goals>
-							<phase>site</phase>
-						</execution>
-					</executions>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -286,15 +270,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-				<configuration>
-					<merge>true</merge>
-					<message>Creating site for ${project.name}:${project.version}</message>
-				</configuration>
 			</plugin>
 
 		</plugins>

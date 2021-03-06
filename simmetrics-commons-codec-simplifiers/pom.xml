@@ -42,15 +42,6 @@
 		<plugins>
 
 			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-				<configuration>
-					<path>${project.artifactId}</path>
-					<message>Creating site for ${project.name}:${project.version}</message>
-				</configuration>
-			</plugin>
-
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>

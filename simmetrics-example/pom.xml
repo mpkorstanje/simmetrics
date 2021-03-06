@@ -22,21 +22,6 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-				<configuration>
-					<path>${project.artifactId}</path>
-					<message>Creating site for ${project.name}:${project.version}</message>
-				</configuration>
-			</plugin>
-
-		</plugins>
-	</build>
-
-
 	<reporting>
 		<plugins>
 

@@ -52,29 +52,3 @@ jobs:
         with:
           file: ./**/target/site/jacoco/jacoco.xml
           name: codecov
-
-  github-pages:
-    name: 'Github Pages'
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v2
-      - name: Cache local Maven repository
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: coverage-${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            coverage-${{ runner.os }}-maven-
-      - uses:
-          AdoptOpenJDK/install-jdk@v1
-        with:
-          version: '11'
-      - name: upload site
-        run: mvn site --settings .m2/github-settings.xml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: codecov/codecov-action@v1
-        with:
-          file: ./**/target/site/jacoco/jacoco.xml
-          name: codecov
