@@ -29,6 +29,8 @@ Change Log
     - RefinedSoundex
     - Soundex
  - Renamed Monge Elkan to Level 2 to more accurately reflect the function of the algorithm
+ - Renamed `org.simmetrics.*` package to `com.github.mpkorstanje.simmetrics.*`
+ - Added Automatic-Module-Name manifest entry
 
 ## Since 4.1.1 ##
  - Fixed bug where the QGram tokenizer would split surrogate pairs. The tokenizer will now split a string on code point
