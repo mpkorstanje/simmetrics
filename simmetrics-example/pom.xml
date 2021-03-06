@@ -6,7 +6,7 @@
 		<version>4.1.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>simmetrics-example</artifactId>
-	<name>Simmetrics Examples</name>
+	<name>Simmetrics - Examples</name>
 	<description>Usage examples for SimMetrics</description>
 
 	<dependencies>
