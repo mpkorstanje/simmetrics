@@ -13,7 +13,7 @@
 			</activation>
 			<properties>
 				<github.global.server>github</github.global.server>
-				<github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
+				<github.global.oauth2Token>${env.GITHUB_TOKEN}</github.global.oauth2Token>
 			</properties>
 		</profile>
 	</profiles>

@@ -1,0 +1,80 @@
+name: Simmetrics CI
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: 'Build'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: build-${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            build-${{ runner.os }}-maven-
+      - uses:
+          AdoptOpenJDK/install-jdk@v1
+        with:
+          version: '11'
+      - name: install dependencies
+        run: mvn install -DskipTests=true -DskipITs=true -Darchetype.test.skip=true -Dmaven.javadoc.skip=true -B -V
+      - name: test
+        run: mvn verify jacoco:report
+
+  coverage:
+    name: 'Coverage'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: coverage-${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            coverage-${{ runner.os }}-maven-
+      - uses:
+          AdoptOpenJDK/install-jdk@v1
+        with:
+          version: '11'
+      - name: install dependencies
+        run: mvn install -DskipTests=true -DskipITs=true -Darchetype.test.skip=true -Dmaven.javadoc.skip=true -B -V
+      - name: test (coverage)
+        run: mvn jacoco:prepare-agent verify jacoco:report
+      - uses: codecov/codecov-action@v1
+        with:
+          file: ./**/target/site/jacoco/jacoco.xml
+          name: codecov
+
+  github-pages:
+    name: 'Github Pages'
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: coverage-${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            coverage-${{ runner.os }}-maven-
+      - uses:
+          AdoptOpenJDK/install-jdk@v1
+        with:
+          version: '11'
+      - name: upload site
+        run: mvn site --settings .m2/github-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: codecov/codecov-action@v1
+        with:
+          file: ./**/target/site/jacoco/jacoco.xml
+          name: codecov

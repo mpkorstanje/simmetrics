@@ -38,14 +38,25 @@
 	</developers>
 
 	<ciManagement>
-		<system>Travis CI</system>
-		<url>https://travis-ci.org/mpkorstanje/simmetrics</url>
+		<system>Github Actions</system>
+		<url>https://github.com/mpkorstanje/simmetrics/actions</url>
 	</ciManagement>
 
 	<issueManagement>
 		<system>GitHub Issues</system>
 		<url>https://github.com/mpkorstanje/simmetrics/issues</url>
 	</issueManagement>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -212,7 +223,7 @@
 							<goals>
 								<goal>site</goal>
 							</goals>
-							<phase>site-deploy</phase>
+							<phase>site</phase>
 						</execution>
 					</executions>
 				</plugin>
@@ -351,16 +362,6 @@
 					</plugin>
 				</plugins>
 			</build>
-			<distributionManagement>
-				<snapshotRepository>
-					<id>ossrh</id>
-					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-				</snapshotRepository>
-				<repository>
-					<id>ossrh</id>
-					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-				</repository>
-			</distributionManagement>
 		</profile>
 	</profiles>
 
